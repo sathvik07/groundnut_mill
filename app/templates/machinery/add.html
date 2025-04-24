@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Add Machinery</h2>
+<form method="post">
+    Name: <input name="name"><br>
+    Type: <input name="type"><br>
+    Last Service Date: <input type="date" name="last_service"><br>
+    Next Service Due: <input type="date" name="next_service"><br>
+    <button type="submit">Add</button>
+</form>
+{% endblock %}

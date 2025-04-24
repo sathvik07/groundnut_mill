@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Add Raw Stock{% endblock %}
+
+{% block content %}
+<h2>➕ Add Raw Groundnut Stock</h2>
+
+<form method="POST" class="mt-4">
+    <div class="mb-3">
+        <label for="supplier_id" class="form-label">Supplier</label>
+        <select name="supplier_id" class="form-select" required>
+            {% for supplier in suppliers %}
+            <option value="{{ supplier.id }}">{{ supplier.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="weight" class="form-label">Weight (kg)</label>
+        <input type="number" step="0.01" name="weight" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="gram" class="form-label">Gram (Yield %)</label>
+        <input type="number" name="gram" step="0.1" class="form-control" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Stock</button>
+</form>
+{% endblock %}

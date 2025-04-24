@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Add Debt{% endblock %}
+
+{% block content %}
+<h2>➕ Lend Money to Supplier</h2>
+
+<form method="POST">
+    <div class="mb-3">
+        <label class="form-label">Supplier</label>
+        <select name="supplier_id" class="form-select" required>
+            {% for s in suppliers %}
+            <option value="{{ s.id }}">{{ s.name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Amount (₹)</label>
+        <input type="number" step="0.01" name="amount" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Total Cost of Goods (₹) [Optional]</label>
+        <input type="number" step="0.01" name="total_cost" class="form-control">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Purpose / Notes</label>
+        <input type="text" name="notes" class="form-control">
+    </div>
+
+    <button class="btn btn-success">Submit</button>
+</form>
+{% endblock %}

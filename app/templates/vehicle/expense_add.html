@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Add Expense for {{ vehicle.number }}</h2>
+<form method="post">
+    Category:
+    <select name="category">
+        <option>Fuel</option>
+        <option>Service</option>
+        <option>Repair</option>
+        <option>Tools</option>
+    </select><br>
+    Amount (₹): <input name="amount" type="number" step="0.01"><br>
+    Description: <input name="description"><br>
+    <button type="submit">Add</button>
+</form>
+{% endblock %}

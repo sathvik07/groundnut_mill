@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Machineries</h2>
+<a href="{{ url_for('machinery.add_machinery') }}">Add Machinery</a>
+<ul>
+    {% for m in machines %}
+        <li>
+            {{ m.name }} ({{ m.type }}) <br>
+            Last Serviced: {{ m.last_service_date.strftime('%Y-%m-%d') }} <br>
+            Next Due: {{ m.next_service_due.strftime('%Y-%m-%d') }} <br>
+            <a href="{{ url_for('machinery.add_expense', machinery_id=m.id) }}">+ Add Expense</a>
+            <ul>
+                {% for e in m.expenses %}
+                    <li>{{ e.category }} - ₹{{ e.amount }} on {{ e.date.strftime('%Y-%m-%d') }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

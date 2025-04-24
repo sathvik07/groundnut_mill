@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Add Supplier</h2>
+<form method="post">
+    Name: <input name="name"><br>
+    Type:
+    <select name="type">
+        <option>Farmer</option>
+        <option>Broker</option>
+        <option>Vendor</option>
+        <option>APMC</option>
+    </select><br>
+    Contact: <input name="contact"><br>
+    <button type="submit">Add</button>
+</form>
+{% endblock %}

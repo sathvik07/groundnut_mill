@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Raw Stock List{% endblock %}
+
+{% block content %}
+<h2>📋 Raw Stock List</h2>
+
+<a href="{{ url_for('raw_stock.add_raw_stock') }}" class="btn btn-success mb-3">+ Add New</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Supplier</th>
+            <th>Weight (kg)</th>
+            <th>Gram (%)</th>
+            <th>Expected Processed (kg)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stock in stocks %}
+        <tr>
+            <td>{{ stock.date.strftime("%Y-%m-%d") }}</td>
+            <td>{{ stock.supplier.name }}</td>
+            <td>{{ stock.weight_kg }}</td>
+            <td>{{ stock.gram }}</td>
+            <td>{{ "%.2f"|format(stock.weight_kg * stock.gram / 100) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

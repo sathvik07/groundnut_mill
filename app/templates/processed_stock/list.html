@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Processed Stock{% endblock %}
+
+{% block content %}
+<h2>⚙️ Processed Stock (Expected)</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Supplier</th>
+            <th>Raw Weight (kg)</th>
+            <th>Gram (%)</th>
+            <th>Expected Processed (kg)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in processed_stocks %}
+        <tr>
+            <td>{{ p.raw_stock.date.strftime('%Y-%m-%d') }}</td>
+            <td>{{ p.raw_stock.supplier.name }}</td>
+            <td>{{ p.raw_stock.weight_kg }}</td>
+            <td>{{ p.raw_stock.gram }}</td>
+            <td>{{ "%.2f"|format(p.expected_weight) }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

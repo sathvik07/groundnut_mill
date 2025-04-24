@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h1>Mill Dashboard</h1>
+
+<h3>🌾 Inventory</h3>
+<p>Total Raw Stock: {{ total_raw_weight }} kg</p>
+<p>Expected Processed Stock: {{ total_processed_weight }} kg</p>
+
+<h3>💰 Finances</h3>
+<p>Total Debt Given: ₹{{ total_debt }}</p>
+<p>Vehicle Expenses: ₹{{ vehicle_expenses }}</p>
+<p>Machinery Expenses: ₹{{ machinery_expenses }}</p>
+
+<h3>📦 Assets</h3>
+<p>Suppliers: {{ supplier_count }}</p>
+<p>Vehicles: {{ vehicle_count }}</p>
+<p>Machineries: {{ machinery_count }}</p>
+
+<hr>
+
+<h2>📊 Visual Summary</h2>
+
+<div style="width: 400px; margin-bottom: 40px;">
+    <canvas id="stockChart"></canvas>
+</div>
+
+<div style="width: 400px;">
+    <canvas id="expenseChart"></canvas>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const stockData = {{ raw_vs_processed | tojson }};
+    const expenseData = {{ expenses | tojson }};
+
+    const stockChart = new Chart(document.getElementById('stockChart'), {
+        type: 'bar',
+        data: {
+            labels: ['Raw Stock', 'Expected Processed'],
+            datasets: [{
+                label: 'Stock (kg)',
+                data: [stockData.raw, stockData.processed],
+                backgroundColor: ['#4CAF50', '#2196F3']
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            }
+        }
+    });
+
+    const expenseChart = new Chart(document.getElementById('expenseChart'), {
+        type: 'pie',
+        data: {
+            labels: ['Vehicle', 'Machinery'],
+            datasets: [{
+                label: 'Expenses (₹)',
+                data: [expenseData.vehicle, expenseData.machinery],
+                backgroundColor: ['#FF9800', '#9C27B0']
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
+{% endblock %}

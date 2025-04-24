@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Add Vehicle{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Add New Vehicle</h2>
+    <form method="POST" action="{{ url_for('vehicle.add_vehicle') }}">
+        <div class="mb-3">
+            <label for="name" class="form-label">Vehicle Name</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="type" class="form-label">Vehicle Type</label>
+            <input type="text" class="form-control" id="type" name="type" placeholder="e.g., Truck, Tractor" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="type" class="form-label">Vehicle Number Plate</label>
+            <input type="text" class="form-control" id="vehicle_number" name="vehicle_number" placeholder="e.g., KA0D51234" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="purchase_date" class="form-label">Purchase Date</label>
+            <input type="date" class="form-control" id="purchase_date" name="purchase_date" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="service_interval_days" class="form-label">Service Interval (days)</label>
+            <input type="number" class="form-control" id="service_interval_days" name="service_interval_days" min="1" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="notes" class="form-label">Notes</label>
+            <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Optional remarks about this vehicle..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add Vehicle</button>
+    </form>
+</div>
+{% endblock %}
