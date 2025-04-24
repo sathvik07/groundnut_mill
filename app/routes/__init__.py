@@ -1,6 +1,12 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
+
 
 def register_routes(app):
+
+    @app.route("/")
+    def index():
+        return render_template("base.html")
+
     from .supplier_routes import supplier_bp
     app.register_blueprint(supplier_bp, url_prefix="/suppliers")
 
