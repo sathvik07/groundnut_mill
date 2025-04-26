@@ -1,21 +1,47 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Vehicles{% endblock %}
 
 {% block content %}
-<h2>Vehicles</h2>
-<a href="{{ url_for('vehicle.add_vehicle') }}">Add Vehicle</a>
-<ul>
-    {% for v in vehicles %}
-        <li>
-            {{ v.number }} ({{ v.type }})
-            <a href="{{ url_for('vehicle.add_expense', vehicle_id=v.id) }}">+ Add Expense</a>
-            <ul>
-                {% for e in v.expenses %}
-                    <li>{{ e.category }} - ₹{{ e.amount }} on {{ e.date.strftime('%Y-%m-%d') }}</li>
-                {% endfor %}
-            </ul>
-        </li>
-    {% endfor %}
-</ul>
+<div class="container my-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>🚚 Vehicles</h2>
+        <a href="{{ url_for('vehicle.add_vehicle') }}" class="btn btn-primary">+ Add New Vehicle</a>
+    </div>
+
+    {% if vehicles %}
+        <div class="row">
+            {% for v in vehicles %}
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ v.name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ v.number_plate }}</h6>
+                        <p class="card-text">
+                            <strong>Notes:</strong> {{ v.description or 'No notes' }}
+                        </p>
+                        <a href="{{ url_for('vehicle.add_expense', vehicle_id=v.id) }}" class="btn btn-sm btn-success mb-3">➕ Add Expense</a>
+
+                        {% if v.expenses %}
+                        <ul class="list-group">
+                            {% for e in v.expenses %}
+                            <li class="list-group-item">
+                                <strong>{{ e.category }}</strong> — ₹{{ "%.2f"|format(e.amount) }} <br>
+                                <small class="text-muted">{{ e.date.strftime('%Y-%m-%d') }}</small><br>
+                                {{ e.description or '' }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% else %}
+                        <p class="text-muted mt-2">No expenses yet.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="text-center text-muted">No vehicles added yet.</p>
+    {% endif %}
+</div>
 {% endblock %}

@@ -1,15 +1,19 @@
 from flask import Blueprint, render_template, request, redirect, url_for
+from flask_login import login_required
+
 from app.models import db, Machinery, MachineryExpense
 from datetime import datetime
 
 machinery_bp = Blueprint("machinery", __name__)
 
 @machinery_bp.route("/")
+@login_required
 def list_machines():
     machines = Machinery.query.all()
     return render_template("machinery/list.html", machines=machines)
 
 @machinery_bp.route("/add", methods=["GET", "POST"])
+@login_required
 def add_machinery():
     if request.method == "POST":
         name = request.form["name"]

@@ -3,28 +3,40 @@
 {% block title %}Processed Stock{% endblock %}
 
 {% block content %}
-<h2>⚙️ Processed Stock (Expected)</h2>
+<div class="container my-4">
+    <h2 class="mb-4">⚙️ Processed Stock (Expected)</h2>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Date</th>
-            <th>Supplier</th>
-            <th>Raw Weight (kg)</th>
-            <th>Gram (%)</th>
-            <th>Expected Processed (kg)</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for p in processed_stocks %}
-        <tr>
-            <td>{{ p.raw_stock.date.strftime('%Y-%m-%d') }}</td>
-            <td>{{ p.raw_stock.supplier.name }}</td>
-            <td>{{ p.raw_stock.weight_kg }}</td>
-            <td>{{ p.raw_stock.gram }}</td>
-            <td>{{ "%.2f"|format(p.expected_weight) }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle">
+            <thead class="table-white">
+                <tr>
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>Product</th>
+                    <th>Quantity (kg)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for p in processed_stocks %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>
+                        {% if p.created_at %}
+                            {{ p.created_at.strftime('%Y-%m-%d') }}
+                        {% else %}
+                            <span class="text-muted">-</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ p.product_name or '-' }}</td>
+                    <td>{{ "%.2f"|format(p.quantity_kg or 0) }}</td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4" class="text-center text-muted">No processed stock available.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}

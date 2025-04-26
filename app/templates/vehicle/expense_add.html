@@ -1,19 +1,39 @@
 {% extends "base.html" %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Add Expense{% endblock %}
 
 {% block content %}
-<h2>Add Expense for {{ vehicle.number }}</h2>
-<form method="post">
-    Category:
-    <select name="category">
-        <option>Fuel</option>
-        <option>Service</option>
-        <option>Repair</option>
-        <option>Tools</option>
-    </select><br>
-    Amount (₹): <input name="amount" type="number" step="0.01"><br>
-    Description: <input name="description"><br>
-    <button type="submit">Add</button>
-</form>
+<div class="container my-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>➕ Add Expense for {{ vehicle.name }} ({{ vehicle.number_plate }})</h2>
+        <a href="{{ url_for('vehicle.list_vehicles') }}" class="btn btn-secondary">← Back to Vehicles</a>
+    </div>
+
+    <div class="card shadow-sm p-4">
+        <form method="post">
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select name="category" id="category" class="form-select" required>
+                    <option value="" disabled selected>Select a category</option>
+                    <option>Fuel</option>
+                    <option>Service</option>
+                    <option>Repair</option>
+                    <option>Tools</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="amount" class="form-label">Amount (₹)</label>
+                <input name="amount" id="amount" type="number" step="0.01" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description (Optional)</label>
+                <input name="description" id="description" type="text" class="form-control">
+            </div>
+
+            <button type="submit" class="btn btn-primary">💾 Save Expense</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

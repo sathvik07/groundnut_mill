@@ -18,7 +18,7 @@
 
         <div class="mb-3">
             <label for="type" class="form-label">Vehicle Number Plate</label>
-            <input type="text" class="form-control" id="vehicle_number" name="vehicle_number" placeholder="e.g., KA0D51234" required>
+            <input type="text" class="form-control" id="vehicle_number" name="vehicle_number" placeholder="e.g., KA051234" required>
         </div>
 
         <div class="mb-3">
@@ -38,5 +38,7 @@
 
         <button type="submit" class="btn btn-primary">Add Vehicle</button>
     </form>
+    <br>
+    <a href="{{ url_for('vehicle.list_vehicles') }}">Back to Vehicles</a>
 </div>
 {% endblock %}

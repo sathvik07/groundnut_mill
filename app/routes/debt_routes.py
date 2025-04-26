@@ -1,15 +1,19 @@
 from flask import Blueprint, render_template, request, redirect, url_for
+from flask_login import login_required
+
 from app.models import db, Supplier, Debt
 from datetime import datetime
 
 debt_bp = Blueprint("debt", __name__)
 
 @debt_bp.route("/debts")
+@login_required
 def list_debts():
     debts = Debt.query.order_by(Debt.date_issued.desc()).all()
     return render_template("debt/list.html", debts=debts)
 
 @debt_bp.route("/debts/add", methods=["GET", "POST"])
+@login_required
 def add_debt():
     suppliers = Supplier.query.all()
 

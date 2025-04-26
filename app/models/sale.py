@@ -10,5 +10,3 @@ class Sale(db.Model):
     price_per_kg = db.Column(db.Float, nullable=False)
     total_price = db.Column(db.Float, nullable=False)
     date_sold = db.Column(db.DateTime, default=datetime.utcnow)
-
-    processed_stock = db.relationship('ProcessedStock', backref='sales')

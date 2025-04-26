@@ -7,4 +7,4 @@ class RawStock(db.Model):
     gram = db.Column(db.Integer, nullable=False)
     date = db.Column(db.DateTime)
 
-    processed_stock = db.relationship('ProcessedStock', backref='raw_stock', uselist=False)
+    # processed_stock = db.relationship('ProcessedStock', backref='raw_stock', uselist=False)

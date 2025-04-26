@@ -14,3 +14,4 @@ from .machinery_expense import MachineryExpense
 from .service_schedule import ServiceSchedule
 from .distributor import Distributor
 from .sale import Sale
+from .user import User

@@ -1,23 +1,63 @@
 {% extends "base.html" %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Machinery Dashboard{% endblock %}
 
 {% block content %}
-<h2>Machineries</h2>
-<a href="{{ url_for('machinery.add_machinery') }}">Add Machinery</a>
-<ul>
-    {% for m in machines %}
-        <li>
-            {{ m.name }} ({{ m.type }}) <br>
-            Last Serviced: {{ m.last_service_date.strftime('%Y-%m-%d') }} <br>
-            Next Due: {{ m.next_service_due.strftime('%Y-%m-%d') }} <br>
-            <a href="{{ url_for('machinery.add_expense', machinery_id=m.id) }}">+ Add Expense</a>
-            <ul>
-                {% for e in m.expenses %}
-                    <li>{{ e.category }} - ₹{{ e.amount }} on {{ e.date.strftime('%Y-%m-%d') }}</li>
-                {% endfor %}
-            </ul>
-        </li>
-    {% endfor %}
-</ul>
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Machineries</h2>
+        <a href="{{ url_for('machinery.add_machinery') }}" class="btn btn-primary">+ Add Machinery</a>
+    </div>
+
+    {% if machines %}
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            {% for m in machines %}
+                <div class="col">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ m.name }}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ m.type }}</h6>
+
+                            <p class="card-text">
+                                <strong>Last Serviced:</strong>
+                                {% if m.last_service_date %}
+                                    {{ m.last_service_date.strftime('%Y-%m-%d') }}
+                                {% else %}
+                                    <span class="text-danger">Not available</span>
+                                {% endif %}
+                                <br>
+
+                                <strong>Next Service Due:</strong>
+                                {% if m.next_service_due %}
+                                    {{ m.next_service_due.strftime('%Y-%m-%d') }}
+                                {% else %}
+                                    <span class="text-danger">Not available</span>
+                                {% endif %}
+                            </p>
+
+                            <a href="{{ url_for('machinery.add_expense', machinery_id=m.id) }}" class="btn btn-sm btn-outline-success">
+                                + Add Expense
+                            </a>
+
+                            {% if m.expenses %}
+                                <hr>
+                                <h6>Expenses:</h6>
+                                <ul class="list-unstyled">
+                                    {% for e in m.expenses %}
+                                        <li class="mb-1">
+                                            <i class="bi bi-currency-rupee"></i> ₹{{ e.amount }} -
+                                            <small>{{ e.category }} on {{ e.date.strftime('%Y-%m-%d') }}</small>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No machineries added yet.</p>
+    {% endif %}
+</div>
 {% endblock %}

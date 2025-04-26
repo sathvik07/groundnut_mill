@@ -7,6 +7,9 @@ def register_routes(app):
     def index():
         return render_template("base.html")
 
+    from .auth import auth_bp
+    app.register_blueprint(auth_bp, url_prefix="/auth")
+
     from .supplier_routes import supplier_bp
     app.register_blueprint(supplier_bp, url_prefix="/suppliers")
 
@@ -27,3 +30,6 @@ def register_routes(app):
 
     from .processed_stock_routes import processed_stock_bp
     app.register_blueprint(processed_stock_bp)
+
+    from .sale_routes import sale_bp
+    app.register_blueprint(sale_bp, url_prefix="/sale")
