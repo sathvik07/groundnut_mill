@@ -3,32 +3,68 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<h1>Mill Dashboard</h1>
+<h2 class="mb-4 px-3 py-2 bg-white text-dark rounded shadow d-inline-block">Mill Dashboard</h2>
 
-<h3>🌾 Inventory</h3>
-<p>Total Raw Stock: {{ total_raw_weight }} kg</p>
-<p>Expected Processed Stock: {{ total_processed_weight }} kg</p>
+<div class="row">
+    <!-- Inventory -->
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h3 class="card-title">🌾 Inventory</h3>
+                <p>Total Raw Stock: {{ total_raw_weight }} kg</p>
+                <p>Expected Processed Stock: {{ total_processed_weight }} kg</p>
+            </div>
+        </div>
+    </div>
 
-<h3>💰 Finances</h3>
-<p>Total Debt Given: ₹{{ total_debt }}</p>
-<p>Vehicle Expenses: ₹{{ vehicle_expenses }}</p>
-<p>Machinery Expenses: ₹{{ machinery_expenses }}</p>
+    <!-- Finances -->
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h3 class="card-title">💰 Finances</h3>
+                <p>Total Debt Given: ₹{{ total_debt }}</p>
+                <p>Vehicle Expenses: ₹{{ vehicle_expenses }}</p>
+                <p>Machinery Expenses: ₹{{ machinery_expenses }}</p>
+            </div>
+        </div>
+    </div>
 
-<h3>📦 Assets</h3>
-<p>Suppliers: {{ supplier_count }}</p>
-<p>Vehicles: {{ vehicle_count }}</p>
-<p>Machineries: {{ machinery_count }}</p>
-
-<hr>
-
-<h2>📊 Visual Summary</h2>
-
-<div style="width: 400px; margin-bottom: 40px;">
-    <canvas id="stockChart"></canvas>
+    <!-- Assets -->
+    <div class="col-md-4 mb-3">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h3 class="card-title">📦 Assets</h3>
+                <p>Suppliers: {{ supplier_count }}</p>
+                <p>Vehicles: {{ vehicle_count }}</p>
+                <p>Machineries: {{ machinery_count }}</p>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div style="width: 400px;">
-    <canvas id="expenseChart"></canvas>
+
+
+<!-- Charts Section -->
+<h2 class="mb-4 px-3 py-2 bg-white text-dark rounded shadow d-inline-block">📊 Visual Summary</h2>
+
+<div class="row">
+    <!-- Stock Chart -->
+    <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-body d-flex justify-content-center">
+                <canvas id="stockChart" style="max-width: 90%; height: auto;"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Expense Chart (Converted to Bar Chart) -->
+    <div class="col-md-6 mb-4">
+        <div class="card shadow-sm">
+            <div class="card-body d-flex justify-content-center">
+                <canvas id="expenseChart" style="max-width: 90%; height: auto;"></canvas>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
 
@@ -37,6 +73,7 @@
     const stockData = {{ raw_vs_processed | tojson }};
     const expenseData = {{ expenses | tojson }};
 
+    // Stock Chart (Bar Chart)
     const stockChart = new Chart(document.getElementById('stockChart'), {
         type: 'bar',
         data: {
@@ -55,10 +92,11 @@
         }
     });
 
+    // Expense Chart (Bar Chart)
     const expenseChart = new Chart(document.getElementById('expenseChart'), {
-        type: 'pie',
+        type: 'bar', // Changed from 'pie' to 'bar'
         data: {
-            labels: ['Vehicle', 'Machinery'],
+            labels: ['Vehicle Expenses', 'Machinery Expenses'], // Updated labels
             datasets: [{
                 label: 'Expenses (₹)',
                 data: [expenseData.vehicle, expenseData.machinery],
@@ -66,7 +104,15 @@
             }]
         },
         options: {
-            responsive: true
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true // Makes sure the Y-axis starts at zero
+                }
+            }
         }
     });
 </script>
