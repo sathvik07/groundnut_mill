@@ -48,7 +48,7 @@ def register():
 
         # Create and set hashed password via model's password_raw property
         new_user = User(username=username, email=email)
-        new_user.password_raw = password
+        new_user.password = password
 
         db.session.add(new_user)
         db.session.commit()
@@ -56,6 +56,6 @@ def register():
         login_user(new_user)
 
         flash('Registration successful. Welcome!', 'success')
-        return redirect(url_for('dashboard.dashboard'))
+        return redirect(url_for('auth.login'))
 
     return render_template('auth/register.html')
