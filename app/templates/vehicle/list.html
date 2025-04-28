@@ -18,20 +18,27 @@
                         <h5 class="card-title">{{ v.name }}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">{{ v.number_plate }}</h6>
                         <p class="card-text">
-                            <strong>Notes:</strong> {{ v.description or 'No notes' }}
+                            <strong>Description:</strong> {{ v.description or 'No description' }}
                         </p>
                         <a href="{{ url_for('vehicle.add_expense', vehicle_id=v.id) }}" class="btn btn-sm btn-success mb-3">➕ Add Expense</a>
 
-                        {% if v.expenses %}
-                        <ul class="list-group">
-                            {% for e in v.expenses %}
+                        {% if v.expenditures %}
+                        <ul class="list-group mb-3">
+                            {% for e in v.expenditures %}
                             <li class="list-group-item">
                                 <strong>{{ e.category }}</strong> — ₹{{ "%.2f"|format(e.amount) }} <br>
                                 <small class="text-muted">{{ e.date.strftime('%Y-%m-%d') }}</small><br>
-                                {{ e.description or '' }}
+                                {{ e.notes or '' }}
                             </li>
                             {% endfor %}
                         </ul>
+
+                        <!-- Total Expenses -->
+                        <div class="alert alert-info p-2">
+                            <strong>Total Expenses:</strong> ₹
+                            {{ v.expenditures | map(attribute='amount') | sum | round(2) }}
+                        </div>
+
                         {% else %}
                         <p class="text-muted mt-2">No expenses yet.</p>
                         {% endif %}

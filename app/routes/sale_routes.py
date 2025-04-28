@@ -5,7 +5,7 @@ from app.models.distributor import Distributor
 from app.models.processed_stock import ProcessedStock
 from flask_login import login_required
 
-sale_bp = Blueprint('sale', __name__, url_prefix='/sales')
+sale_bp = Blueprint('sale', __name__, url_prefix='/sale')
 
 @sale_bp.route('/')
 @login_required
@@ -58,7 +58,7 @@ def add_sale():
             db.session.rollback()
             flash(f"Error processing sale: {str(e)}", "danger")
 
-    return render_template("sale/add.html", distributors=distributors, processed_stocks=processed_stocks)
+    return render_template("sales/add.html", distributors=distributors, processed_stocks=processed_stocks)
 
 
 @sale_bp.route('/delete/<int:sale_id>')
