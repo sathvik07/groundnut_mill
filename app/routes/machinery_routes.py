@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for ,flash
 from flask_login import login_required
 
 from app.models import db, Machinery, MachineryExpense
@@ -55,3 +55,42 @@ def add_expense(machinery_id):
         return redirect(url_for("machinery.list_machines"))
 
     return render_template("machinery/expense_add.html", machine=machine)
+
+@machinery_bp.route("/edit/<int:id>", methods=["GET", "POST"])
+@login_required
+def edit_machinery(id):
+    machinery = Machinery.query.get_or_404(id)
+    print(machinery.name)
+    if request.method == "POST":
+        new_name = request.form["name"]
+        new_machine_type = request.form["type"]  # or whatever your form input is named
+        last_service_input = request.form.get("last_service_date", "").strip()
+        next_service_input = request.form.get("next_service_due", "").strip()
+
+        # Update fields correctly
+        machinery.name = new_name      # <-- Updated to match model
+        machinery.type = new_machine_type  # <-- Updated to match model
+
+        if last_service_input:
+            try:
+                machinery.last_service_date = datetime.strptime(last_service_input, "%Y-%m-%d")
+            except ValueError:
+                flash("Invalid Last Service date format.", "danger")
+                return redirect(request.url)
+
+        if next_service_input:
+            try:
+                machinery.next_service_due = datetime.strptime(next_service_input, "%Y-%m-%d")
+            except ValueError:
+                flash("Invalid Next Service Due date format.", "danger")
+                return redirect(request.url)
+
+        try:
+            db.session.commit()
+            flash("Machinery updated successfully!", "success")
+            return redirect(url_for("machinery.list_machines"))
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Error updating machinery: {str(e)}", "danger")
+
+    return render_template("machinery/edit_machinery_info.html", machinery=machinery)
