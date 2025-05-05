@@ -4,39 +4,13 @@
 
 {% block content %}
 <div class="container my-4">
-    <h2 class="mb-4">⏳ Processed Stock (Expected)</h2>
+    <h2 class="mb-4">⚙️ Total Processed Stock Left</h2>
 
-    <div class="table-responsive">
-        <table class="table table-bordered table-hover align-middle">
-            <thead class="table-white">
-                <tr>
-                    <th>#</th>
-                    <th>Date</th>
-                    <th>Product</th>
-                    <th>Quantity (kg)</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for p in processed_stocks %}
-                <tr>
-                    <th scope="row">{{ loop.index }}</th>
-                    <td>
-                        {% if p.created_at %}
-                            {{ p.created_at.strftime('%Y-%m-%d') }}
-                        {% else %}
-                            <span class="text-muted">-</span>
-                        {% endif %}
-                    </td>
-                    <td>{{ p.product_name or '-' }}</td>
-                    <td>{{ "%.2f"|format(p.quantity_kg or 0) }}</td>
-                </tr>
-                {% else %}
-                <tr>
-                    <td colspan="4" class="text-center text-muted">No processed stock available.</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+    <div class="card shadow-sm p-4 text-center">
+        <h3 class="mb-2">Total Available Stock (kg)</h3>
+        <h1 class="display-4 text-success">
+            {{ "%.2f"|format(total_stock) }} kg
+        </h1>
     </div>
 </div>
 {% endblock %}

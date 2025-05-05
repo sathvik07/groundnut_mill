@@ -3,6 +3,10 @@ from flask_login import current_user
 from flask_migrate import Migrate
 from .extensions import login_manager
 from .models import db
+from flask_caching import Cache
+
+cache = Cache(config={'CACHE_TYPE': 'simple'})
+
 
 def create_app():
     app = Flask(__name__)
@@ -12,6 +16,8 @@ def create_app():
     db.init_app(app)
     migrate = Migrate(app, db)
     migrate.init_app(app, db)
+
+    cache.init_app(app)
 
     login_manager.init_app(app)
     login_manager.login_view = 'auth.login'

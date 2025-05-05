@@ -55,3 +55,12 @@ def add_raw_stock():
             flash(f"Error adding stock: {str(e)}", "danger")
 
     return render_template("raw_stock/add.html", suppliers=suppliers)
+
+
+
+@raw_stock_bp.route("/<int:supplier_id>", methods=["GET", "POST"])
+@login_required
+def display_processed_stock(supplier_id):
+    supplier = Supplier.query.get_or_404(supplier_id)
+    stocks = RawStock.query.filter_by(supplier_id=supplier.id).all()
+    return render_template("raw_stock/supplier_pro_stock.html", supplier=supplier, stocks=stocks)

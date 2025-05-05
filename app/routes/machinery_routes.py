@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for ,flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required
 
 from app.models import db, Machinery, MachineryExpense
@@ -33,10 +33,10 @@ def add_machinery():
 
     return render_template("machinery/add.html")
 
-@machinery_bp.route("/<int:machinery_id>/expense", methods=["GET", "POST"])
-def add_expense(machinery_id):
-    machine = Machinery.query.get_or_404(machinery_id)
-
+@machinery_bp.route("/<int:id>/expense", methods=["GET", "POST"])
+def add_expense(id):
+    machine = Machinery.query.get_or_404(id)
+    print(machine)
     if request.method == "POST":
         category = request.form["category"]
         amount = float(request.form["amount"])
@@ -56,6 +56,7 @@ def add_expense(machinery_id):
 
     return render_template("machinery/expense_add.html", machine=machine)
 
+
 @machinery_bp.route("/edit/<int:id>", methods=["GET", "POST"])
 @login_required
 def edit_machinery(id):
@@ -64,8 +65,8 @@ def edit_machinery(id):
     if request.method == "POST":
         new_name = request.form["name"]
         new_machine_type = request.form["type"]  # or whatever your form input is named
-        last_service_input = request.form.get("last_service_date", "").strip()
-        next_service_input = request.form.get("next_service_due", "").strip()
+        last_service_input = request.form.get("last_service", "").strip()
+        next_service_input = request.form.get("next_service", "").strip()
 
         # Update fields correctly
         machinery.name = new_name      # <-- Updated to match model
@@ -93,4 +94,57 @@ def edit_machinery(id):
             db.session.rollback()
             flash(f"Error updating machinery: {str(e)}", "danger")
 
-    return render_template("machinery/edit_machinery_info.html", machinery=machinery)
+    return render_template("machinery/edit.html", machinery=machinery)
+
+
+
+@machinery_bp.route("/delete/<int:id>")
+@login_required
+def delete_machinery(id):
+    machinery = Machinery.query.get_or_404(id)
+    db.session.delete(machinery)
+    db.session.commit()
+    flash("Machinery deleted successfully!", "success")
+    return redirect(url_for("machinery.list_machines"))
+
+
+@machinery_bp.route("/expense/delete/<int:id>")
+@login_required
+def delete_expense(id):
+    expense = MachineryExpense.query.get_or_404(id)
+    db.session.delete(expense)
+    db.session.commit()
+    flash("Expense deleted successfully!", "success")
+    return redirect(url_for("machinery.list_machines"))
+
+
+@machinery_bp.route("/expense/edit/<int:id>", methods=["GET", "POST"])
+@login_required
+def edit_expense(id):
+    expense = MachineryExpense.query.get_or_404(id)
+    if request.method == "POST":
+        expense.category = request.form["category"]
+        expense.amount = float(request.form["amount"])
+        expense.description = request.form["description"]
+        db.session.commit()
+        flash("Expense updated successfully!", "success")
+        return redirect(url_for("machinery.list_machines"))
+
+    return render_template("machinery/expense_edit.html", expense=expense)
+
+
+@machinery_bp.route("/expense/list/<int:id>")
+@login_required
+def list_expenses(id):
+    machine = Machinery.query.get_or_404(id)
+    expenses = MachineryExpense.query.filter_by(machinery_id=id).all()
+    return render_template("machinery/expense_list.html", machine=machine, expenses=expenses)
+
+
+@machinery_bp.route("/expense/<int:id>")
+@login_required
+def view_expense(id):
+    expense = MachineryExpense.query.get_or_404(id)
+    return render_template("machinery/expense_view.html", expense=expense)
+
+

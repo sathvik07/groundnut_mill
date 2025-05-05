@@ -1,9 +1,5 @@
-# .gitignore
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-*.DS_Store
-venv/
+/.venv
 .env
+/migrations
+__pycache__/
 

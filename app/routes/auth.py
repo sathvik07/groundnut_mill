@@ -46,6 +46,11 @@ def register():
             flash('Username already exists. Please choose another.', 'warning')
             return redirect(url_for('auth.register'))
 
+        existing_email = User.query.filter_by(email=email).first()
+        if existing_email:
+            flash('Email already registered.', 'warning')
+            return redirect(url_for('auth.register'))
+
         # Create and set hashed password via model's password_raw property
         new_user = User(username=username, email=email)
         new_user.password = password
