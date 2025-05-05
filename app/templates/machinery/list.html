@@ -33,11 +33,15 @@
                                 {% else %}
                                     <span class="text-danger">Not available</span>
                                 {% endif %}
+                                <a href="{{ url_for('machinery.edit_machinery', id=m.id) }}" class="btn btn-sm btn-outline-success">
+                                 Edit Machinery
+                            </a>
                             </p>
 
-                            <a href="{{ url_for('machinery.add_expense', machinery_id=m.id) }}" class="btn btn-sm btn-outline-success">
+                            <a href="{{ url_for('machinery.add_expense', id=m.id) }}" class="btn btn-sm btn-outline-success">
                                 + Add Expense
                             </a>
+
 
                             {% if m.expenses %}
                                 <hr>

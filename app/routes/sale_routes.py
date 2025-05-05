@@ -17,37 +17,31 @@ def list_sales():
 @login_required
 def add_sale():
     distributors = Distributor.query.all()
-    processed_stocks = ProcessedStock.query.all()  # Available processed stock
+    processed_stock = ProcessedStock.query.first()  # Only ONE processed stock record
 
     if request.method == "POST":
         try:
             distributor_id = int(request.form["distributor_id"])
-            processed_stock_id = int(request.form["processed_stock_id"])
             quantity_sold = float(request.form["quantity_sold"])
             price_per_kg = float(request.form["price_per_kg"])
 
-            # Find the processed stock item being sold
-            processed_stock = ProcessedStock.query.get(processed_stock_id)
-
-            # Check if there's enough stock to sell
+            # Check if there's enough total processed stock
             if processed_stock.quantity_kg < quantity_sold:
                 flash("Not enough processed stock to complete the sale.", "danger")
                 return redirect(url_for("sale.add_sale"))
 
-            # Calculate total price
             total_price = price_per_kg * quantity_sold
 
             # Create Sale entry
             sale = Sale(
                 distributor_id=distributor_id,
-                processed_stock_id=processed_stock_id,
                 quantity_sold=quantity_sold,
                 price_per_kg=price_per_kg,
                 total_price=total_price
             )
             db.session.add(sale)
 
-            # Update processed stock quantity
+            # Subtract from global processed stock
             processed_stock.quantity_kg -= quantity_sold
 
             db.session.commit()
@@ -58,7 +52,8 @@ def add_sale():
             db.session.rollback()
             flash(f"Error processing sale: {str(e)}", "danger")
 
-    return render_template("sales/add.html", distributors=distributors, processed_stocks=processed_stocks)
+    return render_template("sales/add.html", distributors=distributors, processed_stock=processed_stock)
+
 
 
 @sale_bp.route('/delete/<int:sale_id>')

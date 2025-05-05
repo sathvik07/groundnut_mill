@@ -27,3 +27,40 @@ def add_supplier():
         return redirect(url_for("supplier.list_suppliers"))
 
     return render_template("suppliers/add.html")
+
+
+
+@supplier_bp.route("/edit/<int:supplier_id>", methods=["GET", "POST"])
+@login_required
+def edit_supplier(supplier_id):
+    supplier = Supplier.query.get_or_404(supplier_id)
+
+    if request.method == "POST":
+        supplier.name = request.form["name"]
+        supplier.contact = request.form["contact"]
+        supplier.type = request.form["type"]
+
+        db.session.commit()
+        return redirect(url_for("supplier.list_suppliers"))
+
+    return render_template("suppliers/edit.html", supplier=supplier)
+
+
+@supplier_bp.route("/delete/<int:supplier_id>")
+@login_required
+def delete_supplier(supplier_id):
+    supplier = Supplier.query.get_or_404(supplier_id)
+    db.session.delete(supplier)
+    db.session.commit()
+    return redirect(url_for("supplier.list_suppliers"))
+
+
+
+@supplier_bp.route("/<int:supplier_id>/debts", methods=["GET", "POST"])
+@login_required
+def list_debt_by_supplier_id(supplier_id):
+    supplier = Supplier.query.get_or_404(supplier_id)
+    debts = supplier.debts.all()
+    return render_template("debt/list_by_supplier.html", supplier=supplier, debts=debts)
+
+
