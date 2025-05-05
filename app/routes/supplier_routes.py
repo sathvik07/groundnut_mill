@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required
+from sqlalchemy.exc import SQLAlchemyError
 
 from app.models import db
 from app.models.supplier import Supplier
@@ -10,24 +11,45 @@ supplier_bp = Blueprint("supplier", __name__)
 @supplier_bp.route("/")
 @login_required
 def list_suppliers():
-    suppliers = Supplier.query.all()
+    page = request.args.get('page', 1, type=int)
+    per_page = 20
+    try:
+        pagination = Supplier.query.order_by(Supplier.name).paginate(page=page, per_page=per_page)
+        return render_template("suppliers/list.html", pagination=pagination)
+        # suppliers = Supplier.query.all()
+    except SQLAlchemyError as e:
+        flash("Error retrieving suppliers", "error")
+        # Consider logging the error: logger.error(f"Error retrieving suppliers: {e}")
+        # Handle the error (e.g., log it, flash a message, etc.)
+        # return render_template("suppliers/list.html", suppliers=[])
+        suppliers = []
     return render_template("suppliers/list.html", suppliers=suppliers)
 
 @supplier_bp.route("/add", methods=["GET", "POST"])
 @login_required
 def add_supplier():
     if request.method == "POST":
-        name = request.form["name"]
-        contact = request.form["contact"]
-        type_ = request.form["type"]
+        try:
+            name = request.form.get("name")
+            contact = request.form.get("contact")
+            type_ = request.form.get("type")
 
-        supplier = Supplier(name=name, contact=contact, type=type_)
-        db.session.add(supplier)
-        db.session.commit()
-        return redirect(url_for("supplier.list_suppliers"))
+            if not all([name, contact, type_]):
+                flash("All fields are required", "error")
+                return render_template("suppliers/add.html")
+
+            supplier = Supplier(name=name, contact=contact, type=type_)
+            db.session.add(supplier)
+            db.session.commit()
+            flash("Supplier added successfully", "success")
+            return redirect(url_for("supplier.list_suppliers"))
+
+        except SQLAlchemyError as e:
+            db.session.rollback()
+            flash("Error adding supplier", "error")
+            return render_template("suppliers/add.html"), 500
 
     return render_template("suppliers/add.html")
-
 
 
 @supplier_bp.route("/edit/<int:supplier_id>", methods=["GET", "POST"])
@@ -46,7 +68,7 @@ def edit_supplier(supplier_id):
     return render_template("suppliers/edit.html", supplier=supplier)
 
 
-@supplier_bp.route("/delete/<int:supplier_id>")
+@supplier_bp.route("/delete/<int:supplier_id>", methods=["DELETE"])
 @login_required
 def delete_supplier(supplier_id):
     supplier = Supplier.query.get_or_404(supplier_id)
@@ -59,8 +81,13 @@ def delete_supplier(supplier_id):
 @supplier_bp.route("/<int:supplier_id>/debts", methods=["GET", "POST"])
 @login_required
 def list_debt_by_supplier_id(supplier_id):
-    supplier = Supplier.query.get_or_404(supplier_id)
-    debts = supplier.debts.all()
-    return render_template("debt/list_by_supplier.html", supplier=supplier, debts=debts)
+    try:
+        supplier = Supplier.query.get_or_404(supplier_id)
+        debts = supplier.debts.all()
+        return render_template("debt/list_by_supplier.html", supplier=supplier, debts=debts)
+    except SQLAlchemyError as e:
+        flash("Error retrieving supplier debts", "error")
+        # Consider logging the error: logger.error(f"Error retrieving supplier debts: {e}")
+        return redirect(url_for("supplier.list_suppliers"))
 
 

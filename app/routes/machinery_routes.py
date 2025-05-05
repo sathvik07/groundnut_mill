@@ -1,3 +1,5 @@
+from typing import Optional
+from decimal import Decimal
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required
 
@@ -34,25 +36,42 @@ def add_machinery():
     return render_template("machinery/add.html")
 
 @machinery_bp.route("/<int:id>/expense", methods=["GET", "POST"])
-def add_expense(id):
+@login_required
+def add_expense(id: int):
     machine = Machinery.query.get_or_404(id)
-    print(machine)
+    
     if request.method == "POST":
-        category = request.form["category"]
-        amount = float(request.form["amount"])
-        description = request.form["description"]
-        date = datetime.now()
+        try:
+            amount = Decimal(request.form["amount"])
+            if amount <= 0:
+                raise ValueError("Amount must be positive")
+                
+            category = request.form.get("category", "").strip()
+            description = request.form.get("description", "").strip()
+            
+            if not all([category, description]):
+                flash("All fields are required", "error")
+                return redirect(request.url)
 
-        expense = MachineryExpense(
-            machinery_id=machine.id,
-            category=category,
-            amount=amount,
-            description=description,
-            date=date
-        )
-        db.session.add(expense)
-        db.session.commit()
-        return redirect(url_for("machinery.list_machines"))
+            expense = MachineryExpense(
+                machinery_id=machine.id,
+                category=category,
+                amount=amount,
+                description=description,
+                date=datetime.now()
+            )
+            db.session.add(expense)
+            db.session.commit()
+            flash("Expense added successfully!", "success")
+            return redirect(url_for("machinery.list_machines"))
+            
+        except (ValueError, decimal.InvalidOperation) as e:
+            flash(f"Invalid amount: {str(e)}", "error")
+            return redirect(request.url)
+        except Exception as e:
+            db.session.rollback()
+            flash(f"Error adding expense: {str(e)}", "error")
+            return redirect(request.url)
 
     return render_template("machinery/expense_add.html", machine=machine)
 
@@ -98,13 +117,18 @@ def edit_machinery(id):
 
 
 
-@machinery_bp.route("/delete/<int:id>")
+@machinery_bp.route("/delete/<int:id>", methods=["POST"])
 @login_required
 def delete_machinery(id):
     machinery = Machinery.query.get_or_404(id)
-    db.session.delete(machinery)
-    db.session.commit()
-    flash("Machinery deleted successfully!", "success")
+    try:
+        MachineryExpense.query.filter_by(machinery_id=id).delete()
+        db.session.delete(machinery)
+        db.session.commit()
+        flash("Machinery and related expenses deleted successfully!", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash(f"Error deleting machinery: {str(e)}", "danger")
     return redirect(url_for("machinery.list_machines"))
 
 
@@ -146,5 +170,3 @@ def list_expenses(id):
 def view_expense(id):
     expense = MachineryExpense.query.get_or_404(id)
     return render_template("machinery/expense_view.html", expense=expense)
-
-

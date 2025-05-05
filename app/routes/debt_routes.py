@@ -6,6 +6,7 @@ from app import cache  # Import the cache instance
 from app.models import db, Supplier, Debt
 from datetime import datetime
 
+
 debt_bp = Blueprint("debt", __name__)
 
 def safe_cache_operation(operation):

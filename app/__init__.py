@@ -4,6 +4,8 @@ from flask_migrate import Migrate
 from .extensions import login_manager
 from .models import db
 from flask_caching import Cache
+from app.utils.logger import setup_logger
+
 
 cache = Cache(config={'CACHE_TYPE': 'simple'})
 
@@ -11,6 +13,10 @@ cache = Cache(config={'CACHE_TYPE': 'simple'})
 def create_app():
     app = Flask(__name__)
     app.config.from_object("config.Config")
+
+    # Setup logger
+    logger = setup_logger('flask-app')
+    app.logger = logger
 
     # Initialize extensions
     db.init_app(app)

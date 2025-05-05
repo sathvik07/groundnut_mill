@@ -59,7 +59,7 @@ def edit_distributor(distributor_id):
 
     return render_template("distributors/edit.html", distributor=distributor)
 
-@distributor_bp.route("/delete/<int:distributor_id>", methods=["DELETE"])
+@distributor_bp.route("/delete/<int:distributor_id>", methods=["DELETE", "POST"])
 @login_required
 def delete_distributor(distributor_id):
     try:

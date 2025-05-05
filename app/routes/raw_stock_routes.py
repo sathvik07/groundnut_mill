@@ -1,66 +1,112 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required
 from datetime import datetime
+import logging
+from contextlib import contextmanager
 
 from app.models import db, RawStock, ProcessedStock, Supplier
+from sqlalchemy.exc import SQLAlchemyError
+
+logger = logging.getLogger(__name__)
 
 raw_stock_bp = Blueprint("raw_stock", __name__)
+
+@contextmanager
+def db_transaction():
+    try:
+        yield
+        db.session.commit()
+    except Exception:
+        db.session.rollback()
+        raise
 
 @raw_stock_bp.route("/")
 @login_required
 def list_raw_stock():
-    stocks = RawStock.query.all()
-    return render_template("raw_stock/list.html", stocks=stocks)
+    page = request.args.get('page', 1, type=int)
+    per_page = 20
+    try:
+        pagination = RawStock.query.order_by(RawStock.date.desc()).paginate(page=page, per_page=per_page)
+        return render_template("raw_stock/list.html", pagination=pagination)
+    except SQLAlchemyError as e:
+        logger.error(f"Database error in list_raw_stock: {str(e)}")
+        flash("Error fetching stock data", "error")
+        return render_template("raw_stock/list.html", pagination=None)
 
 @raw_stock_bp.route("/add", methods=["GET", "POST"])
 @login_required
 def add_raw_stock():
-    suppliers = Supplier.query.all()
+    """Add new raw stock and calculate corresponding processed stock."""
+    try:
+        suppliers = Supplier.query.all()
+        if not suppliers:
+            flash("No suppliers available. Please add suppliers first.", "warning")
+            return redirect(url_for("supplier.add_supplier"))
 
-    if request.method == "POST":
-        try:
-            supplier_id = int(request.form["supplier_id"])
-            weight_kg = float(request.form["weight"])
-            gram = int(request.form["gram"])
+        if request.method == "POST":
+            try:
+                supplier_id = int(request.form["supplier_id"])
+                weight_kg = float(request.form["weight"])
+                gram = int(request.form["gram"])
 
-            if gram < 0 or gram > 100:
-                flash("Gram value must be between 0 and 100.", "danger")
-                return redirect(url_for("raw_stock.add_raw_stock"))
+                # Input validation
+                if not Supplier.query.get(supplier_id):
+                    flash("Invalid supplier selected.", "danger")
+                    return redirect(url_for("raw_stock.add_raw_stock"))
+                
+                if weight_kg <= 0:
+                    flash("Weight must be greater than 0.", "danger")
+                    return redirect(url_for("raw_stock.add_raw_stock"))
 
-            # Create RawStock entry
-            raw_stock = RawStock(
-                supplier_id=supplier_id,
-                weight_kg=weight_kg,
-                gram=gram,
-                date=datetime.utcnow()
-            )
-            db.session.add(raw_stock)
+                if gram < 0 or gram > 100:
+                    flash("Gram value must be between 0 and 100.", "danger")
+                    return redirect(url_for("raw_stock.add_raw_stock"))
 
-            # Calculate expected processed stock
-            expected_processed_weight = weight_kg * (gram / 100)
+                with db_transaction():
+                    raw_stock = RawStock(
+                        supplier_id=supplier_id,
+                        weight_kg=weight_kg,
+                        gram=gram,
+                        date=datetime.utcnow()
+                    )
+                    db.session.add(raw_stock)
 
-            # Add ProcessedStock entry
-            processed_stock = ProcessedStock(
-                product_name="Processed Groundnut Oil",  # Example product
-                quantity_kg=expected_processed_weight
-            )
-            db.session.add(processed_stock)
+                    expected_processed_weight = weight_kg * (gram / 100)
+                    processed_stock = ProcessedStock(
+                        raw_stock=raw_stock,
+                        product_name="Processed Groundnut Oil",
+                        quantity_kg=expected_processed_weight,
+                        created_at=datetime.utcnow()
+                    )
+                    db.session.add(processed_stock)
 
-            db.session.commit()
-            flash("Raw stock and processed stock added successfully!", "success")
-            return redirect(url_for("raw_stock.list_raw_stock"))
+                flash("Raw stock and processed stock added successfully!", "success")
+                return redirect(url_for("raw_stock.list_raw_stock"))
 
-        except Exception as e:
-            db.session.rollback()
-            flash(f"Error adding stock: {str(e)}", "danger")
+            except ValueError:
+                flash("Please ensure all input values are valid numbers", "danger")
+            except SQLAlchemyError as e:
+                logger.error(f"Database error in add_raw_stock: {str(e)}")
+                flash("Database error occurred", "danger")
+            except Exception as e:
+                logger.error(f"Unexpected error in add_raw_stock: {str(e)}")
+                flash("An unexpected error occurred", "danger")
 
-    return render_template("raw_stock/add.html", suppliers=suppliers)
+        return render_template("raw_stock/add.html", suppliers=suppliers)
+    except SQLAlchemyError as e:
+        logger.error(f"Database error fetching suppliers: {str(e)}")
+        flash("Error fetching suppliers data", "error")
+        return redirect(url_for("raw_stock.list_raw_stock"))
 
-
-
-@raw_stock_bp.route("/<int:supplier_id>", methods=["GET", "POST"])
+@raw_stock_bp.route("/<int:supplier_id>", methods=["GET"])
 @login_required
-def display_processed_stock(supplier_id):
-    supplier = Supplier.query.get_or_404(supplier_id)
-    stocks = RawStock.query.filter_by(supplier_id=supplier.id).all()
-    return render_template("raw_stock/supplier_pro_stock.html", supplier=supplier, stocks=stocks)
+def list_supplier_raw_stock(supplier_id):
+    """List all raw stock entries for a specific supplier."""
+    try:
+        supplier = Supplier.query.get_or_404(supplier_id)
+        stocks = RawStock.query.filter_by(supplier_id=supplier.id).order_by(RawStock.date.desc()).all()
+        return render_template("raw_stock/supplier_pro_stock.html", supplier=supplier, stocks=stocks)
+    except SQLAlchemyError as e:
+        logger.error(f"Database error in list_supplier_raw_stock: {str(e)}")
+        flash("Error fetching supplier stock data", "error")
+        return render_template("raw_stock/supplier_pro_stock.html", supplier=None, stocks=[])
