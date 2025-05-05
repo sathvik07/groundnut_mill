@@ -3,17 +3,58 @@
 {% block title %}Dashboard{% endblock %}
 
 {% block content %}
-<h2>Add Expense for {{ machine.name }}</h2>
-<form method="post">
-    Category:
-    <select name="category">
-        <option>Oil Change</option>
-        <option>Service</option>
-        <option>Repair</option>
-        <option>Parts</option>
-    </select><br>
-    Amount (₹): <input name="amount" type="number" step="0.01"><br>
-    Description: <input name="description"><br>
-    <button type="submit">Add</button>
-</form>
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Add Expense for {{ machine.name }}</h4>
+        </div>
+        <div class="card-body">
+            <form method="post" id="expense-form">
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category</label>
+                    <select name="category" id="category" class="form-select" required>
+                        <option value="">Select a category</option>
+                        <option>Oil Change</option>
+                        <option>Service</option>
+                        <option>Repair</option>
+                        <option>Parts</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="amount" class="form-label">Amount (₹)</label>
+                    <input name="amount" type="number" step="0.01" id="amount" class="form-control" placeholder="Enter amount" required>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <input name="description" id="description" class="form-control" placeholder="Short description" required>
+                </div>
+                <button type="submit" id="submit-btn" class="btn btn-success" disabled>Add Expense</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('expense-form');
+    const inputs = form.querySelectorAll('input, select');
+    const submitBtn = document.getElementById('submit-btn');
+
+    function validateForm() {
+        let allFilled = true;
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                allFilled = false;
+            }
+        });
+        submitBtn.disabled = !allFilled;
+    }
+
+    inputs.forEach(input => {
+        input.addEventListener('input', validateForm);
+        input.addEventListener('change', validateForm);
+    });
+
+    // Initial check in case autofilled
+    window.addEventListener('DOMContentLoaded', validateForm);
+</script>
 {% endblock %}
