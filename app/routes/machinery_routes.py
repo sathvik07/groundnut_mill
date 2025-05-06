@@ -98,13 +98,18 @@ def edit_machinery(id):
 
 
 
-@machinery_bp.route("/delete/<int:id>")
+@machinery_bp.route("/delete/<int:id>" , methods=["POST"])
 @login_required
 def delete_machinery(id):
     machinery = Machinery.query.get_or_404(id)
-    db.session.delete(machinery)
-    db.session.commit()
-    flash("Machinery deleted successfully!", "success")
+    try:
+        MachineryExpense.query.filter_by(machinery_id=id).delete()
+        db.session.delete(machinery)
+        db.session.commit()
+        flash("Machinery and related expenses deleted successfully!", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash(f"Error deleting machinery: {str(e)}", "danger")
     return redirect(url_for("machinery.list_machines"))
 
 
