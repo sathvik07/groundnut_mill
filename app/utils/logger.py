@@ -15,7 +15,7 @@ def setup_logger(app_name: str, log_dir: str = "logs") -> logging.Logger:
     Returns:
         logging.Logger: Configured logger instance
     """
-    # Create logs directory if it doesn't exist
+    # Create a logs directory if it doesn't exist
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
 
@@ -49,7 +49,7 @@ def setup_logger(app_name: str, log_dir: str = "logs") -> logging.Logger:
     console_handler.setLevel(logging.INFO)
     console_handler.setFormatter(console_formatter)
 
-    # Add handlers to logger
+    # Add handlers to the logger
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)
 

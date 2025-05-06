@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
 from flask_login import login_required
 from app.models import db
 from app.models.distributor import Distributor
@@ -15,6 +15,7 @@ def list_distributors():
         # Handle the error (e.g., log it, flash a message, etc.)
         flash("Error retrieving distributors.", "error")
         # Consider logging the error: logger.error(f"Error retrieving distributors: {e}")
+        current_app.logger.error(f"Error retrieving distributors: {e}")
         return render_template("distributors/list.html", distributors=[])
 
 @distributor_bp.route("/add", methods=["GET", "POST"])
@@ -30,12 +31,15 @@ def add_distributor():
             db.session.add(distributor)
             db.session.commit()
             flash("Distributor added successfully!", "success")
+            # Log the action
+            current_app.logger.info(f"Distributor added: {distributor.id} - {distributor.name}")
             return redirect(url_for("distributor.list_distributors"))
         except Exception as e:
             db.session.rollback()
             flash("Error adding distributor.", "error")
+            # Log the error
+            current_app.logger.error(f"Error adding distributor: {e}")
             # Consider logging the error: logger.error(f"Error adding distributor: {e}")
-
     return render_template("distributors/add.html")
 
 @distributor_bp.route("/edit/<int:distributor_id>", methods=["GET", "POST"])
@@ -51,10 +55,12 @@ def edit_distributor(distributor_id):
 
             db.session.commit()
             flash("Distributor updated successfully!", "success")
+            current_app.logger.info(f"Distributor updated: {distributor.id} - {distributor.name}")
             return redirect(url_for("distributor.list_distributors"))
         except Exception as e:
             db.session.rollback()
             flash("Error updating distributor.", "error")
+            current_app.logger.error(f"Error updating distributor: {e}")
             # Consider logging the error: logger.error(f"Error updating distributor: {e}")
 
     return render_template("distributors/edit.html", distributor=distributor)
@@ -67,8 +73,10 @@ def delete_distributor(distributor_id):
         db.session.delete(distributor)
         db.session.commit()
         flash("Distributor deleted successfully!", "success")
+        current_app.logger.info(f"Distributor deleted: {distributor.id} - {distributor.name}")
     except Exception as e:
         db.session.rollback()
         flash("Error deleting distributor.", "error")
+        current_app.logger.error(f"Error deleting distributor: {e}")
         # Consider logging the error: logger.error(f"Error deleting distributor: {e}")
     return redirect(url_for("distributor.list_distributors"))

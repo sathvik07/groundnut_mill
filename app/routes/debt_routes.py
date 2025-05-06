@@ -51,6 +51,7 @@ def add_debt():
             supplier = Supplier.query.get(supplier_id)
             if not supplier:
                 flash("Selected supplier does not exist", "danger")
+                current_app.logger.warning(f"Invalid supplier selected: {supplier_id}")
                 return render_template("debt/add.html", suppliers=suppliers)
 
             amount = float(request.form["amount"])
@@ -79,6 +80,8 @@ def add_debt():
             current_app.cache.delete(f'supplier_debts_{supplier_id}')
             
             flash("Debt added successfully!", "success")
+            # Log the action
+            current_app.logger.info(f"Debt added: {debt.id} for supplier {supplier.name}")
             
             # Clear all related caches
             current_app.cache.delete_memoized(list_debts)
@@ -88,9 +91,11 @@ def add_debt():
             return redirect(url_for("debt.list_debts"))
         except ValueError as e:
             flash(str(e), "danger")
+            current_app.logger.warning(f"Invalid input: {str(e)}")
             return render_template("debt/add.html", suppliers=suppliers)
         except Exception as e:
             flash(f"Error adding debt: {str(e)}", "danger")
+            current_app.logger.error(f"Error adding debt: {str(e)}")
             return render_template("debt/add.html", suppliers=suppliers)
 
     return render_template("debt/add.html", suppliers=suppliers)
@@ -108,9 +113,11 @@ def list_debt_by_supplier_name(supplier_name):
         return render_template("debt/list_by_supplier.html", supplier=supplier, debts=debts)
     except werkzeug.exceptions.NotFound:
         flash(f"Supplier '{supplier_name}' not found", "danger")
+        current_app.logger.warning(f"Supplier '{supplier_name}' not found")
         return redirect(url_for("debt.list_debts"))
     except SQLAlchemyError as e:
         flash(f"Database error occurred: {str(e)}", "danger")
+        current_app.logger.error(f"Database error occurred: {str(e)}")
         return redirect(url_for("debt.list_debts"))
 
 @debt_bp.route("/debts/list/<int:supplier_id>")
@@ -126,9 +133,11 @@ def list_debt_by_supplier_id(supplier_id):
         return render_template("debt/list_by_supplier.html", supplier=supplier, debts=debts)
     except werkzeug.exceptions.NotFound:
         flash(f"Supplier '{supplier_id}' not found", "danger")
+        current_app.logger.warning(f"Supplier '{supplier_id}' not found")
         return redirect(url_for("debt.list_debts"))
     except SQLAlchemyError as e:
         flash(f"Database error occurred: {str(e)}", "danger")
+        current_app.logger.error(f"Database error occurred: {str(e)}")
         return redirect(url_for("debt.list_debts"))
 
 @debt_bp.route("/debts/search")

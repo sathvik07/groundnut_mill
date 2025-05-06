@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, current_app
 from flask_login import current_user
 from flask_migrate import Migrate
 from .extensions import login_manager
@@ -16,8 +16,10 @@ def create_app():
 
     # Setup logger
     logger = setup_logger('flask-app')
-    app.logger = logger
+    app.logger.handlers = logger.handlers  # Use handlers from the custom logger
+    app.logger.setLevel(logger.level)
 
+    logger.info("Starting Flask application...")
     # Initialize extensions
     db.init_app(app)
     migrate = Migrate(app, db)
@@ -38,5 +40,11 @@ def create_app():
     # Blueprints can be registered here later
     from .routes import register_routes
     register_routes(app)
+
+    # Log unhandled exceptions
+    @app.errorhandler(Exception)
+    def handle_exception(e):
+        current_app.logger.error(f"Unhandled exception: {e}", exc_info=True)
+        return "An internal error occurred.", 500
 
     return app

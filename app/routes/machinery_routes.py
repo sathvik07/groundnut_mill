@@ -1,6 +1,7 @@
+import decimal
 from typing import Optional
 from decimal import Decimal
-from flask import Blueprint, render_template, request, redirect, url_for, flash
+from flask import Blueprint, render_template, request, redirect, url_for, flash, current_app
 from flask_login import login_required
 
 from app.models import db, Machinery, MachineryExpense
@@ -51,6 +52,7 @@ def add_expense(id: int):
             
             if not all([category, description]):
                 flash("All fields are required", "error")
+                current_app.logger.warning("Expense form submission failed: Missing fields.")
                 return redirect(request.url)
 
             expense = MachineryExpense(
@@ -63,14 +65,17 @@ def add_expense(id: int):
             db.session.add(expense)
             db.session.commit()
             flash("Expense added successfully!", "success")
+            current_app.logger.info(f"Expense added for machinery ID {id}")
             return redirect(url_for("machinery.list_machines"))
             
         except (ValueError, decimal.InvalidOperation) as e:
             flash(f"Invalid amount: {str(e)}", "error")
+            current_app.logger.warning(f"Invalid amount: {str(e)}")
             return redirect(request.url)
         except Exception as e:
             db.session.rollback()
             flash(f"Error adding expense: {str(e)}", "error")
+            current_app.logger.error(f"Error adding expense: {str(e)}")
             return redirect(request.url)
 
     return render_template("machinery/expense_add.html", machine=machine)
@@ -88,14 +93,15 @@ def edit_machinery(id):
         next_service_input = request.form.get("next_service", "").strip()
 
         # Update fields correctly
-        machinery.name = new_name      # <-- Updated to match model
-        machinery.type = new_machine_type  # <-- Updated to match model
+        machinery.name = new_name      # <-- Updated to a match model
+        machinery.type = new_machine_type  # <-- Updated to a match model
 
         if last_service_input:
             try:
                 machinery.last_service_date = datetime.strptime(last_service_input, "%Y-%m-%d")
             except ValueError:
                 flash("Invalid Last Service date format.", "danger")
+                current_app.logger.warning("Invalid Last Service date format.")
                 return redirect(request.url)
 
         if next_service_input:
@@ -103,15 +109,18 @@ def edit_machinery(id):
                 machinery.next_service_due = datetime.strptime(next_service_input, "%Y-%m-%d")
             except ValueError:
                 flash("Invalid Next Service Due date format.", "danger")
+                current_app.logger.warning("Invalid Next Service Due date format.")
                 return redirect(request.url)
 
         try:
             db.session.commit()
             flash("Machinery updated successfully!", "success")
+            current_app.logger.info(f"Machinery updated: {machinery.id}")
             return redirect(url_for("machinery.list_machines"))
         except Exception as e:
             db.session.rollback()
             flash(f"Error updating machinery: {str(e)}", "danger")
+            current_app.logger.error(f"Error updating machinery: {str(e)}")
 
     return render_template("machinery/edit.html", machinery=machinery)
 
@@ -126,9 +135,11 @@ def delete_machinery(id):
         db.session.delete(machinery)
         db.session.commit()
         flash("Machinery and related expenses deleted successfully!", "success")
+        current_app.logger.info(f"Machinery deleted: {machinery.id}")
     except Exception as e:
         db.session.rollback()
         flash(f"Error deleting machinery: {str(e)}", "danger")
+        current_app.logger.error(f"Error deleting machinery: {str(e)}")
     return redirect(url_for("machinery.list_machines"))
 
 
@@ -139,6 +150,7 @@ def delete_expense(id):
     db.session.delete(expense)
     db.session.commit()
     flash("Expense deleted successfully!", "success")
+    current_app.logger.info(f"Expense deleted: {expense.id}")
     return redirect(url_for("machinery.list_machines"))
 
 
@@ -152,6 +164,7 @@ def edit_expense(id):
         expense.description = request.form["description"]
         db.session.commit()
         flash("Expense updated successfully!", "success")
+        current_app.logger.info(f"Expense updated: {expense.id}")
         return redirect(url_for("machinery.list_machines"))
 
     return render_template("machinery/expense_edit.html", expense=expense)

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, flash
+from flask import Blueprint, render_template, flash, current_app
 from flask_login import login_required
 from sqlalchemy import func
 from sqlalchemy.exc import SQLAlchemyError
@@ -15,4 +15,5 @@ def view_processed_stock() -> str:
         return render_template("processed_stock/list.html", total_stock=total_stock)
     except SQLAlchemyError as e:
         flash("Error fetching stock data", "error")
+        current_app.logger.error(f"Error fetching stock data: {e}")
         return render_template("processed_stock/list.html", total_stock=0.0)
