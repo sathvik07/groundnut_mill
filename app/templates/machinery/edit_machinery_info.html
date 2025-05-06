@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Machinery{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-sm p-4">
+        <h2 class="mb-4">✎ Edit Machinery Info</h2>
+
+        <form method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label">Machinery Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ machinery.name }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="type" class="form-label">Type</label>
+                <input type="text" class="form-control" id="type" name="type" value="{{ machinery.type }}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="last_service_date" class="form-label">Last Service Date</label>
+                <input type="date" class="form-control" id="last_service_date" name="last_service_date"
+                       value="{{ machinery.last_service_date.strftime('%Y-%m-%d') if machinery.last_service_date else '' }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="next_service_due" class="form-label">Next Service Due</label>
+                <input type="date" class="form-control" id="next_service_due" name="next_service_due"
+                       value="{{ machinery.next_service_due.strftime('%Y-%m-%d') if machinery.next_service_due else ''}}">
+            </div>
+
+            <button type="submit" class="btn btn-success">💾 Save Changes</button>
+            <a href="{{ url_for('machinery.list_machines') }}" class="btn btn-secondary ms-2">↩ Cancel</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

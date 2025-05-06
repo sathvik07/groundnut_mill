@@ -19,7 +19,29 @@
                         <h6 class="card-subtitle mb-2 text-muted">{{ v.number_plate }}</h6>
                         <p class="card-text">
                             <strong>Description:</strong> {{ v.description or 'No description' }}
+
+                            <!-- Delete button with tooltip -->
+<!--                            <form action="{{ url_for('vehicle.delete_vehicle', vehicle_id=v.id) }}" method="POST" style="display:inline;">-->
+<!--                                <button type="submit"-->
+<!--                                        class="btn btn-sm btn-outline-danger mb-3 float-end ms-2"-->
+<!--                                        data-bs-toggle="tooltip"-->
+<!--                                        data-bs-placement="top"-->
+<!--                                        title="Delete Vehicle"-->
+<!--                                        onclick="return confirm('Are you sure you want to delete this vehicle?');">-->
+<!--                                    🗑️-->
+<!--                                </button>-->
+<!--                            </form>-->
+
+                            <!-- Edit button with tooltip -->
+                            <a href="{{ url_for('vehicle.edit_vehicle', vehicle_id=v.id) }}"
+                               class="btn btn-sm btn-primary mb-3 float-end"
+                               data-bs-toggle="tooltip"
+                               data-bs-placement="top"
+                               title="Edit Vehicle Info">
+                               ✎
+                            </a>
                         </p>
+
                         <a href="{{ url_for('vehicle.add_expense', vehicle_id=v.id) }}" class="btn btn-sm btn-success mb-3">➕ Add Expense</a>
 
                         {% if v.expenditures %}
@@ -51,4 +73,16 @@
         <p class="text-center text-muted">No vehicles added yet.</p>
     {% endif %}
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // Initialize Bootstrap tooltips
+  document.addEventListener("DOMContentLoaded", function () {
+    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+      new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+  });
+</script>
 {% endblock %}

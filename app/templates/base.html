@@ -53,7 +53,10 @@
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('processed_stock.view_processed_stock') }}">Processed</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('debt.list_debts') }}">Debts</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('sale.list_sales') }}">Sales</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a></li>
+                    <!-- Logout button opens modal -->
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
+                    </li>
                 {% else %}
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login') }}">🔐Login</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.register') }}">📝Register</a></li>
@@ -61,6 +64,8 @@
             </ul>
         </div>
     </nav>
+
+    <!-- Flash Messages -->
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}
         {% for category, message in messages %}
@@ -72,7 +77,6 @@
       {% endif %}
     {% endwith %}
 
-
     <!-- Background Section -->
     <div class="background-section">
         <div class="container content-wrapper mt-4">
@@ -80,8 +84,28 @@
         </div>
     </div>
 
+    <!-- Logout Confirmation Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-danger">
+          <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to log out?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <a href="{{ url_for('auth.logout') }}" class="btn btn-danger">Yes, Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
     {% block scripts %}{% endblock %}
 </body>
 </html>
