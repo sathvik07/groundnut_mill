@@ -40,16 +40,16 @@ def add_machinery():
 @login_required
 def add_expense(id: int):
     machine = Machinery.query.get_or_404(id)
-    
+
     if request.method == "POST":
         try:
             amount = Decimal(request.form["amount"])
             if amount <= 0:
                 raise ValueError("Amount must be positive")
-                
+
             category = request.form.get("category", "").strip()
             description = request.form.get("description", "").strip()
-            
+
             if not all([category, description]):
                 flash("All fields are required", "error")
                 current_app.logger.warning("Expense form submission failed: Missing fields.")
@@ -67,7 +67,7 @@ def add_expense(id: int):
             flash("Expense added successfully!", "success")
             current_app.logger.info(f"Expense added for machinery ID {id}")
             return redirect(url_for("machinery.list_machines"))
-            
+
         except (ValueError, decimal.InvalidOperation) as e:
             flash(f"Invalid amount: {str(e)}", "error")
             current_app.logger.warning(f"Invalid amount: {str(e)}")
