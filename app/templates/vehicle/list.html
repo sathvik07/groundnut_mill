@@ -42,8 +42,7 @@
                             </a>
                         </p>
 
-                        <a href="{{ url_for('vehicle.add_expense', vehicle_id=v.id) }}" class="btn btn-sm btn-success mb-3">➕ Add Expense</a>
-
+                        <a href="{{ url_for('vehicle.add_expense', vehicle_id=v.id) }}"  class="btn btn-primary mb-3">+ Add Expense</a>
                         {% if v.expenditures %}
                         <ul class="list-group mb-3">
                             {% for e in v.expenditures %}

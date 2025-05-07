@@ -5,7 +5,7 @@
 {% block content %}
 <div class="container mt-4">
     <div class="card shadow-sm">
-        <div class="card-header bg-primary text-white">
+        <div class="card-header  text-black">
             <h4 class="mb-0">Add Expense for {{ machine.name }}</h4>
         </div>
         <div class="card-body">
@@ -28,7 +28,8 @@
                     <label for="description" class="form-label">Description</label>
                     <input name="description" id="description" class="form-control" placeholder="Short description" required>
                 </div>
-                <button type="submit" id="submit-btn" class="btn btn-success" disabled>Add Expense</button>
+                <button type="submit"  class="btn btn-success" > 📄 Save </button>
+                 <a href="{{ url_for('machinery.list_machines') }}" class="btn btn-danger ms-2">ㄨ Cancel</a>
             </form>
         </div>
     </div>
