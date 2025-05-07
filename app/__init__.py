@@ -14,6 +14,9 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object("config.Config")
 
+    with app.app_context():
+        print(current_app.static_folder)
+
     # Setup logger
     logger = setup_logger('flask-app')
     app.logger.handlers = logger.handlers  # Use handlers from the custom logger
