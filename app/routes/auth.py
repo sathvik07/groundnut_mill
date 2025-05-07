@@ -30,7 +30,7 @@ def login():
 def logout():
     logout_user()
     flash('You have been logged out.', 'info')
-    current_app.logger.info(f"User {current_user.username} logged out successfully.")
+    current_app.logger.info(f"User logged out successfully.")
     return redirect(url_for('auth.login'))
 
 @auth_bp.route('/register', methods=['GET', 'POST'])

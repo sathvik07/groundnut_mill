@@ -143,31 +143,49 @@ def delete_machinery(id):
     return redirect(url_for("machinery.list_machines"))
 
 
-@machinery_bp.route("/expense/delete/<int:id>")
+@machinery_bp.route("/<int:machinery_id>/expenses/delete/<int:expense_id>", methods=["POST"])
 @login_required
-def delete_expense(id):
-    expense = MachineryExpense.query.get_or_404(id)
-    db.session.delete(expense)
-    db.session.commit()
-    flash("Expense deleted successfully!", "success")
-    current_app.logger.info(f"Expense deleted: {expense.id}")
-    return redirect(url_for("machinery.list_machines"))
-
-
-@machinery_bp.route("/expense/edit/<int:id>", methods=["GET", "POST"])
-@login_required
-def edit_expense(id):
-    expense = MachineryExpense.query.get_or_404(id)
-    if request.method == "POST":
-        expense.category = request.form["category"]
-        expense.amount = float(request.form["amount"])
-        expense.description = request.form["description"]
+def delete_expense(machinery_id, expense_id):
+    machinery = Machinery.query.get_or_404(machinery_id)
+    try:
+        expense = MachineryExpense.query.get_or_404(expense_id)
+        db.session.delete(expense)
         db.session.commit()
-        flash("Expense updated successfully!", "success")
-        current_app.logger.info(f"Expense updated: {expense.id}")
-        return redirect(url_for("machinery.list_machines"))
+        return redirect(url_for("machinery.list_expenses", id=machinery.id))
+    except Exception as e:
+        db.session.rollback()
+        flash("An error occurred while deleting the expense.", "error")
+        current_app.logger.error(f"Error deleting expense ID {expense_id} for machinery ID {machinery_id}: {e}")
+        return redirect(url_for("machinery.list_expenses", id=machinery.id))
 
-    return render_template("machinery/expense_edit.html", expense=expense)
+
+@machinery_bp.route("/<int:machinery_id>/expenses/edit/<int:expense_id>", methods=["GET", "POST"])
+@login_required
+def edit_expense(machinery_id, expense_id):
+    machinery = Machinery.query.get_or_404(machinery_id)
+    expense = MachineryExpense.query.get_or_404(expense_id)
+
+    if expense.machinery_id != machinery.id:
+        flash("Unauthorized action.", "error")
+        current_app.logger.warning(f"Unauthorized edit attempt for expense ID {expense_id}")
+        return redirect(url_for("machinery.list_expenses", id=machinery.id))
+
+    if request.method == "POST":
+        try:
+            expense.category = request.form["category"]
+            expense.amount = float(request.form["amount"])
+            expense.description = request.form["description"]
+            db.session.commit()
+            flash("Expense updated successfully!", "success")
+            current_app.logger.info(f"Expense updated: {expense.id}")
+            return redirect(url_for("machinery.list_expenses", id=machinery.id))
+        except Exception as e:
+            db.session.rollback()
+            flash("An error occurred while updating the expense.", "error")
+            current_app.logger.error(f"Error updating expense ID {expense_id} for machinery ID {machinery_id}: {e}")
+            return render_template("machinery/expense_edit.html", machinery=machinery, expense=expense)
+
+    return render_template("machinery/expense_edit.html", machinery=machinery, expense=expense)
 
 
 @machinery_bp.route("/expense/list/<int:id>")

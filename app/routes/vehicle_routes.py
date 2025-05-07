@@ -95,6 +95,7 @@ def add_expense(vehicle_id):
 
     return render_template("vehicle/expense_add.html", vehicle=vehicle)
 
+
 @vehicle_bp.route("/edit/<int:vehicle_id>", methods=["GET", "POST"])
 @login_required
 def edit_vehicle(vehicle_id):
