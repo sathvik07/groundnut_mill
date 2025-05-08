@@ -14,12 +14,12 @@
             <div class="mb-3">
                 <label for="category" class="form-label">Category</label>
                 <select name="category" id="category" class="form-select" required>
-                    <option value="" disabled selected>{{expense.category}}</option>
-                    <option>Fuel</option>
-                    <option>Service</option>
-                    <option>Repair</option>
-                    <option>Tools</option>
-                </select>
+    <option value="" disabled>Select a category</option>
+    {% for option in ['Fuel', 'Service', 'Repair', 'Tools'] %}
+        <option value="{{ option }}" {% if expense.category == option %}selected{% endif %}>{{ option }}</option>
+    {% endfor %}
+</select>
+
             </div>
 
             <div class="mb-3">
@@ -32,7 +32,7 @@
                 <input name="description" id="description" type="text" class="form-control" value="{{expense.notes}}">
             </div>
 
-            <button type="submit" class="btn btn-success">📄 Save </button>
+            <button type="submit" class="btn btn-success">💾 Update </button>
             <a href="{{ url_for('vehicle.list_vehicles') }}" class="btn btn-danger">ㄨ Cancel</a>
         </form>
     </div>

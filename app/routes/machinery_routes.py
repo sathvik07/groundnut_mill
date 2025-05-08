@@ -146,17 +146,18 @@ def delete_machinery(id):
 @machinery_bp.route("/<int:machinery_id>/expenses/delete/<int:expense_id>", methods=["POST"])
 @login_required
 def delete_expense(machinery_id, expense_id):
-    machinery = Machinery.query.get_or_404(machinery_id)
     try:
+        Machinery.query.get_or_404(machinery_id)  # Optional: to confirm it exists
         expense = MachineryExpense.query.get_or_404(expense_id)
         db.session.delete(expense)
         db.session.commit()
-        return redirect(url_for("machinery.list_expenses", id=machinery.id))
+        flash("Expense deleted successfully!", "success")
     except Exception as e:
         db.session.rollback()
         flash("An error occurred while deleting the expense.", "error")
         current_app.logger.error(f"Error deleting expense ID {expense_id} for machinery ID {machinery_id}: {e}")
-        return redirect(url_for("machinery.list_expenses", id=machinery.id))
+
+    return redirect(url_for("machinery.list_machines"))
 
 
 @machinery_bp.route("/<int:machinery_id>/expenses/edit/<int:expense_id>", methods=["GET", "POST"])
@@ -168,7 +169,7 @@ def edit_expense(machinery_id, expense_id):
     if expense.machinery_id != machinery.id:
         flash("Unauthorized action.", "error")
         current_app.logger.warning(f"Unauthorized edit attempt for expense ID {expense_id}")
-        return redirect(url_for("machinery.list_expenses", id=machinery.id))
+        return redirect(url_for("machinery.list_machines"))
 
     if request.method == "POST":
         try:
@@ -178,15 +179,14 @@ def edit_expense(machinery_id, expense_id):
             db.session.commit()
             flash("Expense updated successfully!", "success")
             current_app.logger.info(f"Expense updated: {expense.id}")
-            return redirect(url_for("machinery.list_expenses", id=machinery.id))
+            return redirect(url_for("machinery.list_machines"))
         except Exception as e:
             db.session.rollback()
-            flash("An error occurred while updating the expense.", "error")
+            flash(f"An error occurred while updating the expense: {e}", "error")
             current_app.logger.error(f"Error updating expense ID {expense_id} for machinery ID {machinery_id}: {e}")
             return render_template("machinery/expense_edit.html", machinery=machinery, expense=expense)
 
     return render_template("machinery/expense_edit.html", machinery=machinery, expense=expense)
-
 
 @machinery_bp.route("/expense/list/<int:id>")
 @login_required

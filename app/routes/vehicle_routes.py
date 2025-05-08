@@ -103,9 +103,9 @@ def edit_vehicle(vehicle_id):
 
     if request.method == "POST":
         try:
-            vehicle.number_plate = request.form["vehicle_number"]
+            vehicle.number_plate = request.form["number_plate"]
             vehicle.name = request.form["name"]
-            vehicle.description = request.form["notes"]
+            vehicle.description = request.form["description"]
             db.session.commit()
             return redirect(url_for("vehicle.list_vehicles"))
         except Exception as e:
@@ -140,12 +140,12 @@ def delete_expense(vehicle_id, expense_id):
         expense = VehicleExpense.query.get_or_404(expense_id)
         db.session.delete(expense)
         db.session.commit()
-        return redirect(url_for("vehicle.add_expense", vehicle_id=vehicle.id))
+        return redirect(url_for("vehicle.list_vehicles", vehicle_id=vehicle.id))
     except Exception as e:
         db.session.rollback()
         flash("An error occurred while deleting the expense.", "error")
         current_app.logger.error(f"Error deleting expense ID {expense_id} for vehicle ID {vehicle_id}: {e}")
-        return redirect(url_for("vehicle.add_expense", vehicle_id=vehicle.id))
+        return redirect(url_for("vehicle.list_vehicles", vehicle_id=vehicle.id))
 
 
 @vehicle_bp.route("/<int:vehicle_id>/expenses/edit/<int:expense_id>", methods=["GET", "POST"])
@@ -160,7 +160,7 @@ def edit_expense(vehicle_id, expense_id):
             expense.amount = float(request.form["amount"])
             expense.notes = request.form["description"]
             db.session.commit()
-            return redirect(url_for("vehicle.add_expense", vehicle_id=vehicle.id))
+            return redirect(url_for("vehicle.list_vehicles", vehicle_id=vehicle.id))
         except Exception as e:
             db.session.rollback()
             flash("An error occurred while updating the expense.", "error")
