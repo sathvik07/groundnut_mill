@@ -67,7 +67,7 @@
                                         {{ e.notes or '' }}
 
                                         <!-- Delete Expense -->
-                                        <form action="{{ url_for('machinery.delete_expense', id=m.id) }}" method="POST" style="display:inline;">
+                                        <form action="{{ url_for('machinery.delete_expense', machinery_id=m.id, expense_id=e.id) }}" method="POST" style="display:inline;">
                                             <button type="submit"
                                                     class="btn btn-sm btn-outline-danger mb-3 float-end ms-2"
                                                     data-bs-toggle="tooltip"
@@ -79,7 +79,7 @@
                                         </form>
 
                                         <!-- Edit Expense -->
-                                        <a href="{{ url_for('machinery.edit_expense', id=m.id) }}"
+                                        <a href="{{ url_for('machinery.edit_expense', machinery_id=m.id, expense_id=e.id) }}"
                                            class="btn btn-sm btn-primary mb-3 float-end"
                                            data-bs-toggle="tooltip"
                                            data-bs-placement="top"
