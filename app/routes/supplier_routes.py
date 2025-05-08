@@ -78,7 +78,6 @@ def edit_supplier(supplier_id):
         return render_template("suppliers/edit.html", supplier=supplier)
     except SQLAlchemyError as e:
         db.session.rollback()
-        logger.error(f"Error updating supplier: {e}")
         flash("Error updating supplier", "error")
         current_app.logger.error(f"Error updating supplier: {e}")
         # Consider logging the error: logger.error(f"Error updating supplier: {e}")
@@ -96,7 +95,6 @@ def delete_supplier(supplier_id):
         return redirect(url_for("supplier.list_suppliers"))
     except SQLAlchemyError as e:
         db.session.rollback()
-        logger.error(f"Error deleting supplier: {e}")
         flash("Error deleting supplier", "error")
         current_app.logger.error(f"Error deleting supplier: {e}")
         return redirect(url_for("supplier.list_suppliers"))
