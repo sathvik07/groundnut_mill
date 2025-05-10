@@ -17,3 +17,5 @@ def view_processed_stock() -> str:
         flash("Error fetching stock data", "error")
         current_app.logger.error(f"Error fetching stock data: {e}")
         return render_template("processed_stock/list.html", total_stock=0.0)
+
+
