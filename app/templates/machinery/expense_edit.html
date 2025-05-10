@@ -1,38 +1,42 @@
 {% extends "base.html" %}
 
-{% block title %}Edit Machinery{% endblock %}
+{% block title %}Edit Expense{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="card shadow-sm p-4">
-        <h2 class="mb-4">✎ Edit Machinery Info</h2>
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-header text-black">
+            <h4 class="mb-0">✎ Edit Expense for {{ machinery.name }}</h4>
+        </div>
+        <div class="card-body">
+            <form method="post" id="expense-form">
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category</label>
+                    <select name="category" id="category" class="form-select" required>
+                        <option value="">Select a category</option>
+                        {% for option in ['Oil Change', 'Service', 'Repair', 'Parts'] %}
+                            <option value="{{ option }}" {% if expense.category == option %}selected{% endif %}>{{ option }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
 
-        <form method="post">
-            <div class="mb-3">
-                <label for="name" class="form-label">Machinery Name</label>
-                <input type="text" class="form-control" id="name" name="name" value="{{ machinery.name }}" required>
-            </div>
+                <div class="mb-3">
+                    <label for="amount" class="form-label">Amount (₹)</label>
+                    <input name="amount" type="number" step="0.01" id="amount"
+                           class="form-control" value="{{ expense.amount }}" required>
+                </div>
 
-            <div class="mb-3">
-                <label for="type" class="form-label">Type</label>
-                <input type="text" class="form-control" id="type" name="type" value="{{ machinery.type }}" required>
-            </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <input name="description" id="description" class="form-control"
+       value="{{ expense.description }}" placeholder="Short description" required>
 
-            <div class="mb-3">
-                <label for="last_service_date" class="form-label">Last Service Date</label>
-                <input type="date" class="form-control" id="last_service_date" name="last_service_date"
-                       value="{{ machinery.last_service_date.strftime('%Y-%m-%d') if machinery.last_service_date else '' }}">
-            </div>
+                </div>
 
-            <div class="mb-3">
-                <label for="next_service_due" class="form-label">Next Service Due</label>
-                <input type="date" class="form-control" id="next_service_due" name="next_service_due"
-                       value="{{ machinery.next_service_due.strftime('%Y-%m-%d') if machinery.next_service_due else ''}}">
-            </div>
-
-            <button type="submit" class="btn btn-success">💾 Save </button>
-            <a href="{{ url_for('machinery.list_machines') }}" class="btn btn-secondary ms-2">↩ Cancel</a>
-        </form>
+                <button type="submit" class="btn btn-success">💾 Update</button>
+                <a href="{{ url_for('machinery.list_machines') }}" class="btn btn-danger ms-2">↩ Cancel</a>
+            </form>
+        </div>
     </div>
 </div>
 {% endblock %}
