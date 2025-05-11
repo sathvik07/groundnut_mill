@@ -2994,3 +2994,4 @@ Traceback (most recent call last):
   File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
     raise NotFound()
 werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-11 17:42:53,526 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
