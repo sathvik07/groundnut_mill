@@ -44,13 +44,13 @@ def add_supplier():
             db.session.add(supplier)
             db.session.commit()
             flash("Supplier added successfully", "success")
-            current_app.logger.info(f"Supplier added: {supplier.id} - {supplier.name}")
+            current_app.logger.info("Supplier added: {supplier.id} - {supplier.name}")
             return redirect(url_for("raw_stock/list.html"))
 
         except SQLAlchemyError as e:
             db.session.rollback()
             flash("Error adding supplier", "error")
-            current_app.logger.error(f"Error adding supplier: {e}")
+            current_app.logger.error("Error adding supplier: {e}")
             return render_template("suppliers/add.html"), 500
 
     return render_template("raw_stock/list.html")
