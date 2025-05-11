@@ -1490,6 +1490,1163 @@ Traceback (most recent call last):
   File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
     raise NotFound()
 werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 10:42:41,882 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 10:42:41,994 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 10:42:42,002 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 10:42:59,202 - app - ERROR - [raw_stock_routes.py:100] - Unexpected error in add_raw_stock: 'raw_stock' is an invalid keyword argument for ProcessedStock
+2025-05-10 10:48:15,662 - app - ERROR - [raw_stock_routes.py:100] - Unexpected error in add_raw_stock: 'raw_stock' is an invalid keyword argument for ProcessedStock
+2025-05-10 10:48:29,950 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-10 10:49:39,888 - app - ERROR - [raw_stock_routes.py:96] - Database error in add_raw_stock: (psycopg2.errors.UniqueViolation) duplicate key value violates unique constraint "processed_stock_product_name_key"
+DETAIL:  Key (product_name)=(Processed Groundnut) already exists.
+
+[SQL: INSERT INTO processed_stock (product_name, quantity_kg, created_at) VALUES (%(product_name)s, %(quantity_kg)s, %(created_at)s) RETURNING processed_stock.id]
+[parameters: {'product_name': 'Processed Groundnut', 'quantity_kg': 134.0, 'created_at': datetime.datetime(2025, 5, 10, 5, 19, 39, 886148)}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2025-05-10 10:52:03,224 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-10 10:52:25,273 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-10 10:54:28,717 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-10 10:54:56,752 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-10 10:55:01,460 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-10 11:06:19,505 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-10 11:06:31,260 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-10 11:06:51,471 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-10 11:07:31,169 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:07:33,762 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:15:22,057 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:15:23,838 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:25:10,463 - app - INFO - [auth.py:18] - User admin logged in successfully.
+2025-05-10 11:25:15,210 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:25:17,311 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:25:18,252 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:25:21,032 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:25:23,163 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:25:24,151 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:25:25,534 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:25:26,984 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:25:44,971 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:25:46,558 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:25:47,533 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:25:48,457 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:25:49,533 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:28:27,492 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:28:29,415 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:28:30,289 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:28:54,789 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:28:55,678 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:28:56,028 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:28:56,296 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:28:57,317 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:28:58,208 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:28:59,905 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:29:00,896 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:29:05,287 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:32:42,633 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:32:58,518 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:32:59,474 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:32:59,658 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:35:55,488 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-10 11:36:06,830 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:36:08,288 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:36:09,814 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:36:10,851 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:36:11,726 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:36:12,346 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:36:12,806 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:37:04,973 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:45:48,774 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-10 11:46:06,398 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:46:08,032 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:46:09,394 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:50:03,594 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-10 11:50:06,266 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:50:07,918 - app - ERROR - [__init__.py:50] - Unhandled exception: 'float' object is not iterable
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/guggarisathvik/groundnut_mill/app/routes/processed_stock_routes.py", line 15, in view_processed_stock
+    return render_template("processed_stock/list.html", processed_stocks=total_stock)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/base.html", line 83, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 21, in block 'content'
+    {% for p in processed_stocks %}
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 424, in __init__
+    self._iterator = self._to_iterator(iterable)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 432, in _to_iterator
+    return iter(iterable)
+TypeError: 'float' object is not iterable
+2025-05-10 11:50:07,928 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:50:10,208 - app - ERROR - [__init__.py:50] - Unhandled exception: 'float' object is not iterable
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/guggarisathvik/groundnut_mill/app/routes/processed_stock_routes.py", line 15, in view_processed_stock
+    return render_template("processed_stock/list.html", processed_stocks=total_stock)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/base.html", line 83, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 21, in block 'content'
+    {% for p in processed_stocks %}
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 424, in __init__
+    self._iterator = self._to_iterator(iterable)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 432, in _to_iterator
+    return iter(iterable)
+TypeError: 'float' object is not iterable
+2025-05-10 11:50:10,214 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:50:16,807 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:50:18,238 - app - ERROR - [__init__.py:50] - Unhandled exception: 'float' object is not iterable
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/guggarisathvik/groundnut_mill/app/routes/processed_stock_routes.py", line 15, in view_processed_stock
+    return render_template("processed_stock/list.html", processed_stocks=total_stock)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/base.html", line 83, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 21, in block 'content'
+    {% for p in processed_stocks %}
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 424, in __init__
+    self._iterator = self._to_iterator(iterable)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 432, in _to_iterator
+    return iter(iterable)
+TypeError: 'float' object is not iterable
+2025-05-10 11:50:18,243 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:52:01,245 - app - ERROR - [__init__.py:50] - Unhandled exception: 'float' object is not iterable
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/guggarisathvik/groundnut_mill/app/routes/processed_stock_routes.py", line 15, in view_processed_stock
+    return render_template("processed_stock/list.html", total_stock=total_stock)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/base.html", line 83, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 21, in block 'content'
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 424, in __init__
+    self._iterator = self._to_iterator(iterable)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 432, in _to_iterator
+    return iter(iterable)
+TypeError: 'float' object is not iterable
+2025-05-10 11:52:02,346 - app - ERROR - [__init__.py:50] - Unhandled exception: 'float' object is not iterable
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/guggarisathvik/groundnut_mill/app/routes/processed_stock_routes.py", line 15, in view_processed_stock
+    return render_template("processed_stock/list.html", total_stock=total_stock)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/base.html", line 83, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 21, in block 'content'
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 424, in __init__
+    self._iterator = self._to_iterator(iterable)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 432, in _to_iterator
+    return iter(iterable)
+TypeError: 'float' object is not iterable
+2025-05-10 11:53:52,998 - app - ERROR - [__init__.py:50] - Unhandled exception: 'float' object is not iterable
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/guggarisathvik/groundnut_mill/app/routes/processed_stock_routes.py", line 15, in view_processed_stock
+    return render_template("processed_stock/list.html", total_stock=total_stock)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/base.html", line 83, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 21, in block 'content'
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 424, in __init__
+    self._iterator = self._to_iterator(iterable)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 432, in _to_iterator
+    return iter(iterable)
+TypeError: 'float' object is not iterable
+2025-05-10 11:53:54,113 - app - ERROR - [__init__.py:50] - Unhandled exception: 'float' object is not iterable
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/guggarisathvik/groundnut_mill/app/routes/processed_stock_routes.py", line 15, in view_processed_stock
+    return render_template("processed_stock/list.html", total_stock=total_stock)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/base.html", line 83, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 21, in block 'content'
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 424, in __init__
+    self._iterator = self._to_iterator(iterable)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 432, in _to_iterator
+    return iter(iterable)
+TypeError: 'float' object is not iterable
+2025-05-10 11:53:55,068 - app - ERROR - [__init__.py:50] - Unhandled exception: 'float' object is not iterable
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/guggarisathvik/groundnut_mill/app/routes/processed_stock_routes.py", line 15, in view_processed_stock
+    return render_template("processed_stock/list.html", total_stock=total_stock)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/base.html", line 83, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 21, in block 'content'
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 424, in __init__
+    self._iterator = self._to_iterator(iterable)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 432, in _to_iterator
+    return iter(iterable)
+TypeError: 'float' object is not iterable
+2025-05-10 11:54:28,840 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:54:29,701 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:54:30,987 - app - ERROR - [__init__.py:50] - Unhandled exception: 'float' object is not iterable
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/guggarisathvik/groundnut_mill/app/routes/processed_stock_routes.py", line 15, in view_processed_stock
+    return render_template("processed_stock/list.html", total_stock=total_stock)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/base.html", line 83, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 21, in block 'content'
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 424, in __init__
+    self._iterator = self._to_iterator(iterable)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 432, in _to_iterator
+    return iter(iterable)
+TypeError: 'float' object is not iterable
+2025-05-10 11:54:30,992 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:57:10,538 - app - ERROR - [__init__.py:50] - Unhandled exception: 'float' object is not iterable
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/guggarisathvik/groundnut_mill/app/routes/processed_stock_routes.py", line 15, in view_processed_stock
+    return render_template("processed_stock/list.html", total_stock=total_stock)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/base.html", line 83, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/processed_stock/list.html", line 21, in block 'content'
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 424, in __init__
+    self._iterator = self._to_iterator(iterable)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/runtime.py", line 432, in _to_iterator
+    return iter(iterable)
+TypeError: 'float' object is not iterable
+2025-05-10 11:57:23,927 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-10 11:57:35,783 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:57:37,843 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 11:58:34,801 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
 2025-05-08 22:32:20,355 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
 2025-05-08 22:32:20,621 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
 2025-05-08 22:32:49,318 - app - INFO - [machinery_routes.py:182] - Expense updated: 9
@@ -1580,154 +2737,260 @@ Traceback (most recent call last):
   File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 629, in match
     raise NotFound() from None
 werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-2025-05-08 22:39:49,443 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 12:00:40,267 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-10 12:00:43,710 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
 Traceback (most recent call last):
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
     rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 891, in dispatch_request
-    self.raise_routing_exception(req)
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 500, in raise_routing_exception
-    raise request.routing_exception  # type: ignore[misc]
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/ctx.py", line 362, in match_request
-    result = self.url_adapter.match(return_rule=True)  # type: ignore
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 629, in match
-    raise NotFound() from None
-werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-2025-05-08 22:39:59,577 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-Traceback (most recent call last):
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 891, in dispatch_request
-    self.raise_routing_exception(req)
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 500, in raise_routing_exception
-    raise request.routing_exception  # type: ignore[misc]
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/ctx.py", line 362, in match_request
-    result = self.url_adapter.match(return_rule=True)  # type: ignore
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 629, in match
-    raise NotFound() from None
-werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-2025-05-08 22:42:54,274 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-Traceback (most recent call last):
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 891, in dispatch_request
-    self.raise_routing_exception(req)
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 500, in raise_routing_exception
-    raise request.routing_exception  # type: ignore[misc]
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/ctx.py", line 362, in match_request
-    result = self.url_adapter.match(return_rule=True)  # type: ignore
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 629, in match
-    raise NotFound() from None
-werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-2025-05-08 22:43:20,341 - app - INFO - [supplier_routes.py:47] - Supplier added: 3 - Akshatha
-2025-05-08 22:44:08,405 - app - INFO - [supplier_routes.py:47] - Supplier added: 4 - sathvik
-2025-05-08 22:45:54,583 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
-2025-05-08 22:46:14,850 - app - INFO - [supplier_routes.py:47] - Supplier added: 5 - Sakshu
-2025-05-08 22:47:09,453 - app - ERROR - [raw_stock_routes.py:100] - Unexpected error in add_raw_stock: 'raw_stock' is an invalid keyword argument for ProcessedStock
-2025-05-08 22:48:01,140 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
-2025-05-08 22:50:14,576 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
-2025-05-08 22:50:20,019 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
-2025-05-08 22:50:34,925 - app - INFO - [supplier_routes.py:47] - Supplier added: 6 - asas
-2025-05-08 22:50:34,926 - app - ERROR - [__init__.py:50] - Unhandled exception: Could not build url for endpoint 'raw_stock/list.html'. Did you mean 'raw_stock.list_raw_stock' instead?
-Traceback (most recent call last):
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/app/routes/supplier_routes.py", line 48, in add_supplier
-    return redirect(url_for("raw_stock/list.html"))
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/helpers.py", line 232, in url_for
-    return current_app.url_for(
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 1121, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 1110, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 924, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'raw_stock/list.html'. Did you mean 'raw_stock.list_raw_stock' instead?
-2025-05-08 22:50:59,104 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
-2025-05-08 22:51:00,217 - app - INFO - [supplier_routes.py:47] - Supplier added: 7 - asas
-2025-05-08 22:51:00,219 - app - ERROR - [__init__.py:50] - Unhandled exception: Could not build url for endpoint 'raw_stock/list.html'. Did you mean 'raw_stock.list_raw_stock' instead?
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 12:00:44,850 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
 Traceback (most recent call last):
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
     rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
-    return current_app.ensure_sync(func)(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/app/routes/supplier_routes.py", line 48, in add_supplier
-    return redirect(url_for("raw_stock/list.html"))
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/helpers.py", line 232, in url_for
-    return current_app.url_for(
-           ^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 1121, in url_for
-    return self.handle_url_build_error(error, endpoint, values)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 1110, in url_for
-    rv = url_adapter.build(  # type: ignore[union-attr]
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 924, in build
-    raise BuildError(endpoint, values, method, self)
-werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'raw_stock/list.html'. Did you mean 'raw_stock.list_raw_stock' instead?
-2025-05-08 22:51:18,989 - app - ERROR - [raw_stock_routes.py:100] - Unexpected error in add_raw_stock: 'raw_stock' is an invalid keyword argument for ProcessedStock
-2025-05-08 22:51:22,725 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-Traceback (most recent call last):
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
-    rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 891, in dispatch_request
-    self.raise_routing_exception(req)
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 500, in raise_routing_exception
-    raise request.routing_exception  # type: ignore[misc]
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/ctx.py", line 362, in match_request
-    result = self.url_adapter.match(return_rule=True)  # type: ignore
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 629, in match
-    raise NotFound() from None
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
 werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-2025-05-11 10:15:26,778 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 12:00:45,957 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
 Traceback (most recent call last):
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
     rv = self.dispatch_request()
-         ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 891, in dispatch_request
-    self.raise_routing_exception(req)
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 500, in raise_routing_exception
-    raise request.routing_exception  # type: ignore[misc]
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/ctx.py", line 362, in match_request
-    result = self.url_adapter.match(return_rule=True)  # type: ignore
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 629, in match
-    raise NotFound() from None
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
 werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
-2025-05-11 10:15:48,839 - app - INFO - [auth.py:18] - User admin logged in successfully.
-2025-05-11 10:16:12,359 - app - ERROR - [debt_routes.py:16] - Cache operation failed: 'Flask' object has no attribute 'cache'
-2025-05-11 10:16:17,759 - app - INFO - [auth.py:33] - User logged out successfully.
-2025-05-11 16:04:23,043 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
-2025-05-11 16:04:23,434 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
-2025-05-11 16:04:46,938 - app - INFO - [auth.py:18] - User admin logged in successfully.
-2025-05-11 16:05:36,888 - app - ERROR - [raw_stock_routes.py:100] - Unexpected error in add_raw_stock: 'raw_stock' is an invalid keyword argument for ProcessedStock
+2025-05-10 12:00:47,324 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 12:00:48,323 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 12:00:49,445 - app - ERROR - [debt_routes.py:16] - Cache operation failed: 'Flask' object has no attribute 'cache'
+2025-05-10 12:00:49,460 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 12:00:51,988 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 12:00:55,151 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 12:01:48,989 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 12:01:52,314 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 12:02:15,969 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 12:02:43,406 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 12:02:52,053 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 12:02:58,311 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 12:03:00,711 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 12:03:12,205 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-10 12:03:17,953 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 278, in <lambda>
+    view_func=lambda **kw: self_ref().send_static_file(**kw),  # type: ignore # noqa: B950
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 326, in send_static_file
+    return send_from_directory(
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/helpers.py", line 565, in send_from_directory
+    return werkzeug.utils.send_from_directory(  # type: ignore[return-value]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/utils.py", line 575, in send_from_directory
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.

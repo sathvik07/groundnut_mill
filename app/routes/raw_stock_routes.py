@@ -29,15 +29,16 @@ def list_raw_stock():
         pagination = RawStock.query.order_by(RawStock.date.desc()).paginate(page=page, per_page=per_page)
         return render_template("raw_stock/list.html", pagination=pagination)
     except SQLAlchemyError as e:
-        logger.error(f"Database error in list_raw_stock: {str(e)}")
+        # logger.error(f"Database error in list_raw_stock: {str(e)}")
         flash("Error fetching stock data", "error")
         current_app.logger.error(f"Database error in list_raw_stock: {str(e)}")
         return render_template("raw_stock/list.html", pagination=None)
 
+
 @raw_stock_bp.route("/add", methods=["GET", "POST"])
 @login_required
 def add_raw_stock():
-    """Add new raw stock and calculate corresponding processed stock."""
+    """Add new raw stock and calculate the corresponding processed stock."""
     try:
         suppliers = Supplier.query.all()
         if not suppliers:
@@ -78,15 +79,14 @@ def add_raw_stock():
 
                     expected_processed_weight = weight_kg * (gram / 100)
                     processed_stock = ProcessedStock(
-                        raw_stock=raw_stock,
-                        product_name="Processed Groundnut Oil",
+                        product_name="Processed Groundnut",
                         quantity_kg=expected_processed_weight,
                         created_at=datetime.utcnow()
                     )
                     db.session.add(processed_stock)
 
                 flash("Raw stock and processed stock added successfully!", "success")
-                current_app.logger.error(f"Error adding expense for vehicle ID {vehicle_id}: {e}")
+                # current_app.logger.error()
                 return redirect(url_for("raw_stock.list_raw_stock"))
 
             except ValueError:
