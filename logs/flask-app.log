@@ -3190,3 +3190,8 @@ Traceback (most recent call last):
     raise NotFound() from None
 werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
 2025-05-11 19:52:51,895 - app - INFO - [supplier_routes.py:48] - Supplier added: 4 - Mahesh
+2025-05-11 20:01:46,284 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-11 20:04:48,206 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-11 20:05:27,713 - app - INFO - [supplier_routes.py:48] - Supplier added: 5 - Ganesh
+2025-05-11 20:09:31,035 - app - INFO - [supplier_routes.py:48] - Supplier added: 6 - Ganga
+2025-05-11 20:12:12,942 - app - INFO - [supplier_routes.py:48] - Supplier added: 7 - Ramesh
