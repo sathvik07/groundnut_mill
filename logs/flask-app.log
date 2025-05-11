@@ -1580,3 +1580,154 @@ Traceback (most recent call last):
   File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 629, in match
     raise NotFound() from None
 werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-08 22:39:49,443 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-08 22:39:59,577 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-08 22:42:54,274 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-08 22:43:20,341 - app - INFO - [supplier_routes.py:47] - Supplier added: 3 - Akshatha
+2025-05-08 22:44:08,405 - app - INFO - [supplier_routes.py:47] - Supplier added: 4 - sathvik
+2025-05-08 22:45:54,583 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-08 22:46:14,850 - app - INFO - [supplier_routes.py:47] - Supplier added: 5 - Sakshu
+2025-05-08 22:47:09,453 - app - ERROR - [raw_stock_routes.py:100] - Unexpected error in add_raw_stock: 'raw_stock' is an invalid keyword argument for ProcessedStock
+2025-05-08 22:48:01,140 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-08 22:50:14,576 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-08 22:50:20,019 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-08 22:50:34,925 - app - INFO - [supplier_routes.py:47] - Supplier added: 6 - asas
+2025-05-08 22:50:34,926 - app - ERROR - [__init__.py:50] - Unhandled exception: Could not build url for endpoint 'raw_stock/list.html'. Did you mean 'raw_stock.list_raw_stock' instead?
+Traceback (most recent call last):
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/app/routes/supplier_routes.py", line 48, in add_supplier
+    return redirect(url_for("raw_stock/list.html"))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/helpers.py", line 232, in url_for
+    return current_app.url_for(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'raw_stock/list.html'. Did you mean 'raw_stock.list_raw_stock' instead?
+2025-05-08 22:50:59,104 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-08 22:51:00,217 - app - INFO - [supplier_routes.py:47] - Supplier added: 7 - asas
+2025-05-08 22:51:00,219 - app - ERROR - [__init__.py:50] - Unhandled exception: Could not build url for endpoint 'raw_stock/list.html'. Did you mean 'raw_stock.list_raw_stock' instead?
+Traceback (most recent call last):
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/app/routes/supplier_routes.py", line 48, in add_supplier
+    return redirect(url_for("raw_stock/list.html"))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/helpers.py", line 232, in url_for
+    return current_app.url_for(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 1121, in url_for
+    return self.handle_url_build_error(error, endpoint, values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 1110, in url_for
+    rv = url_adapter.build(  # type: ignore[union-attr]
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 924, in build
+    raise BuildError(endpoint, values, method, self)
+werkzeug.routing.exceptions.BuildError: Could not build url for endpoint 'raw_stock/list.html'. Did you mean 'raw_stock.list_raw_stock' instead?
+2025-05-08 22:51:18,989 - app - ERROR - [raw_stock_routes.py:100] - Unexpected error in add_raw_stock: 'raw_stock' is an invalid keyword argument for ProcessedStock
+2025-05-08 22:51:22,725 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-11 10:15:26,778 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-11 10:15:48,839 - app - INFO - [auth.py:18] - User admin logged in successfully.
+2025-05-11 10:16:12,359 - app - ERROR - [debt_routes.py:16] - Cache operation failed: 'Flask' object has no attribute 'cache'
+2025-05-11 10:16:17,759 - app - INFO - [auth.py:33] - User logged out successfully.
+2025-05-11 16:04:23,043 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-11 16:04:23,434 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-11 16:04:46,938 - app - INFO - [auth.py:18] - User admin logged in successfully.
+2025-05-11 16:05:36,888 - app - ERROR - [raw_stock_routes.py:100] - Unexpected error in add_raw_stock: 'raw_stock' is an invalid keyword argument for ProcessedStock

@@ -45,7 +45,7 @@ def add_supplier():
             db.session.commit()
             flash("Supplier added successfully", "success")
             current_app.logger.info(f"Supplier added: {supplier.id} - {supplier.name}")
-            return redirect(url_for("supplier.list_suppliers"))
+            return redirect(url_for("raw_stock/list.html"))
 
         except SQLAlchemyError as e:
             db.session.rollback()
@@ -53,7 +53,7 @@ def add_supplier():
             current_app.logger.error(f"Error adding supplier: {e}")
             return render_template("suppliers/add.html"), 500
 
-    return render_template("suppliers/add.html")
+    return render_template("raw_stock/list.html")
 
 
 @supplier_bp.route("/edit/<int:supplier_id>", methods=["GET", "POST"])
