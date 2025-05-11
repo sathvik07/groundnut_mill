@@ -21,7 +21,7 @@ def safe_cache_operation(operation):
 @login_required
 def list_debts():
     cached_data = safe_cache_operation(
-        lambda: current_app.cache.get(f'debt_list_{request.query_string}')
+        lambda: cache.get(f'debt_list_{request.query_string}')
     )
     if cached_data:
         return cached_data
@@ -76,17 +76,17 @@ def add_debt():
             db.session.commit()
             
             # Clear relevant caches
-            current_app.cache.delete('debt_list_view')
-            current_app.cache.delete(f'supplier_debts_{supplier_id}')
+            cache.delete('debt_list_view')
+            cache.delete(f'supplier_debts_{supplier_id}')
             
             flash("Debt added successfully!", "success")
             # Log the action
             current_app.logger.info(f"Debt added: {debt.id} for supplier {supplier.name}")
             
             # Clear all related caches
-            current_app.cache.delete_memoized(list_debts)
-            current_app.cache.delete_memoized(list_debt_by_supplier_name)
-            current_app.cache.delete_memoized(list_debt_by_supplier_id)
+            cache.delete_memoized(list_debts)
+            cache.delete_memoized(list_debt_by_supplier_name)
+            cache.delete_memoized(list_debt_by_supplier_id)
             
             return redirect(url_for("debt.list_debts"))
         except ValueError as e:
@@ -102,7 +102,7 @@ def add_debt():
 
 @debt_bp.route("/debts/list/<supplier_name>")
 @login_required
-@cache.cached(timeout=300, query_string=True)  # Use cache. instead of current_app.cache
+@cache.cached(timeout=300, query_string=True)
 def list_debt_by_supplier_name(supplier_name):
     try:
         page = request.args.get('page', 1, type=int)
@@ -122,7 +122,7 @@ def list_debt_by_supplier_name(supplier_name):
 
 @debt_bp.route("/debts/list/<int:supplier_id>")
 @login_required
-@cache.cached(timeout=300, query_string=True)  # Use cache. instead of current_app.cache
+@cache.cached(timeout=300, query_string=True)
 def list_debt_by_supplier_id(supplier_id):
     try:
         page = request.args.get('page', 1, type=int)
