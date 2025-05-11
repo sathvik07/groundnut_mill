@@ -1,19 +1,25 @@
 {% extends "base.html" %}
 
-{% block title %}Dashboard{% endblock %}
+{% block title %}Add Supplier{% endblock %}
 
 {% block content %}
-<h2>Add Supplier</h2>
-<form method="post">
-    Name: <input name="name"><br>
-    Type:
-    <select name="type">
-        <option>Farmer</option>
-        <option>Broker</option>
-        <option>Vendor</option>
-        <option>APMC</option>
-    </select><br>
-    Contact: <input name="contact"><br>
-    <button type="submit">Add</button>
+<h2>➕ Add Supplier</h2>
+
+<form method="POST">
+    <input type="hidden" name="next" value="{{ next }}">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" name="name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="contact" class="form-label">Contact</label>
+        <input type="text" name="contact" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="type" class="form-label">Type</label>
+        <input type="text" name="type" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Supplier</button>
+    <a href="{{ next }}" class="btn btn-secondary ms-2">Cancel</a>
 </form>
 {% endblock %}

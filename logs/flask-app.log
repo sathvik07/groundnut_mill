@@ -3001,3 +3001,89 @@ werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on 
 2025-05-11 18:44:38,266 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
 2025-05-11 18:44:43,931 - app - INFO - [debt_routes.py:84] - Debt added: 6 for supplier Ramu
 2025-05-11 18:45:04,641 - app - INFO - [debt_routes.py:84] - Debt added: 7 for supplier Ramu
+2025-05-11 18:57:02,231 - app - ERROR - [__init__.py:50] - Unhandled exception: 'pagination' is undefined
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/guggarisathvik/groundnut_mill/app/routes/supplier_routes.py", line 56, in add_supplier
+    return render_template("raw_stock/list.html")
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/raw_stock/list.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/base.html", line 83, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/raw_stock/list.html", line 21, in block 'content'
+    {% if pagination.items %}
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'pagination' is undefined
+2025-05-11 19:00:54,961 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-11 19:01:33,176 - app - ERROR - [__init__.py:50] - Unhandled exception: 'pagination' is undefined
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/guggarisathvik/groundnut_mill/app/routes/supplier_routes.py", line 56, in add_supplier
+    return render_template("raw_stock/list.html")
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/raw_stock/list.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/base.html", line 83, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/raw_stock/list.html", line 21, in block 'content'
+    {% if pagination.items %}
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'pagination' is undefined
+2025-05-11 19:07:36,312 - app - ERROR - [__init__.py:50] - Unhandled exception: 'pagination' is undefined
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask_login/utils.py", line 290, in decorated_view
+    return current_app.ensure_sync(func)(*args, **kwargs)
+  File "/Users/guggarisathvik/groundnut_mill/app/routes/supplier_routes.py", line 56, in add_supplier
+    return render_template("raw_stock/list.html", pagination=None)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/raw_stock/list.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/base.html", line 83, in top-level template code
+    {% block content %}{% endblock %}
+  File "/Users/guggarisathvik/groundnut_mill/app/templates/raw_stock/list.html", line 21, in block 'content'
+    {% if pagination.items %}
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/jinja2/environment.py", line 490, in getattr
+    return getattr(obj, attribute)
+jinja2.exceptions.UndefinedError: 'pagination' is undefined
+2025-05-11 19:07:52,767 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-11 19:09:40,757 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-11 19:42:33,852 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-11 19:43:25,913 - app - INFO - [supplier_routes.py:48] - Supplier added: 3 - Raghava
