@@ -15,8 +15,7 @@
                 <option value="{{ supplier.id }}">{{ supplier.name }}</option>
                 {% endfor %}
             </select>
-            <a href="{{ url_for('supplier.add_supplier') }}" class="btn btn-outline-secondary" title="Add New Supplier">➕</a>
-        </div>
+            <a href="{{ url_for('supplier.add_supplier', next=request.url) }}" class="btn btn-outline-secondary" title="Add New Supplier">➕</a>        </div>
     </div>
 
     <div class="mb-3">
