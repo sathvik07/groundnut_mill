@@ -30,6 +30,8 @@
         <input type="text" name="notes" class="form-control">
     </div>
 
-    <button class="btn btn-success">Submit</button>
+
+     <button type="submit" class="btn btn-success">📄 Save</button>
+     <a href="{{url_for('debt.list_debts')}}" class="btn btn-danger ms-2">ㄨ Cancel</a>
 </form>
 {% endblock %}

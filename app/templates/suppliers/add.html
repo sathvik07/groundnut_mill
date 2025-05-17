@@ -19,7 +19,10 @@
         <label for="type" class="form-label">Type</label>
         <input type="text" name="type" class="form-control" required>
     </div>
-    <button type="submit" class="btn btn-primary">Add Supplier</button>
-    <a href="{{ next }}" class="btn btn-secondary ms-2">Cancel</a>
+
+
+    <button type="submit" class="btn btn-success">📄 Save</button>
+            <a href="{{url_for('raw_stock.add_raw_stock')}}" class="btn btn-danger ms-2">ㄨ Cancel</a>
+
 </form>
 {% endblock %}

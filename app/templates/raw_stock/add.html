@@ -28,8 +28,8 @@
         <input type="number" name="gram" step="0.1" class="form-control" required>
     </div>
 
-    <button type="submit" class="btn btn-primary">Add Stock</button>
-    <a href="{{ url_for('raw_stock.list_raw_stock') }}" class="btn btn-secondary ms-2">Back to List</a>
+    <button type="submit" class="btn btn-success">📄 Save</button>
+            <a href="{{url_for('raw_stock.list_raw_stock') }}" class="btn btn-danger ms-2">ㄨ Cancel</a>
 </form>
 {% endblock %}
 
