@@ -29,7 +29,6 @@ def list_suppliers():
 @supplier_bp.route("/add", methods=["GET", "POST"])
 @login_required
 def add_supplier():
-    next_url = request.args.get("next", url_for("raw_stock.add_raw_stock"))
     if request.method == "POST":
         try:
             name = request.form.get("name")
@@ -39,22 +38,26 @@ def add_supplier():
             if not all([name, contact, type_]):
                 flash("All fields are required", "error")
                 current_app.logger.warning("Supplier form submission failed: Missing fields.")
+<<<<<<< HEAD
                 return render_template("suppliers/add.html", next=next_url)
+=======
+                return render_template("suppliers/add.html")
+>>>>>>> 46e668f140f59416a8aac15e319aa4660af554d7
 
             supplier = Supplier(name=name, contact=contact, type=type_)
             db.session.add(supplier)
             db.session.commit()
             flash("Supplier added successfully", "success")
             current_app.logger.info(f"Supplier added: {supplier.id} - {supplier.name}")
-            return redirect(next_url)
+            return redirect(url_for("raw_stock.add_raw_stock"))
 
         except SQLAlchemyError as e:
             db.session.rollback()
             flash("Error adding supplier", "error")
             current_app.logger.error(f"Error adding supplier: {e}")
-            return render_template("suppliers/add.html", next=next_url), 500
+            return render_template("suppliers/add.html"), 500
 
-    return render_template("suppliers/add.html", next=next_url)
+    return render_template("suppliers/add.html")
 
 
 @supplier_bp.route("/edit/<int:supplier_id>", methods=["GET", "POST"])

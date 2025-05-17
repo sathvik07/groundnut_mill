@@ -3189,6 +3189,7 @@ Traceback (most recent call last):
   File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 629, in match
     raise NotFound() from None
 werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+<<<<<<< HEAD
 2025-05-11 19:59:55,709 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
 Traceback (most recent call last):
   File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
@@ -3809,3 +3810,12 @@ Traceback (most recent call last):
   File "/Users/akshathacr/groundnut_mill/.venv/lib/python3.12/site-packages/werkzeug/routing/map.py", line 629, in match
     raise NotFound() from None
 werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+=======
+2025-05-11 19:52:51,895 - app - INFO - [supplier_routes.py:48] - Supplier added: 4 - Mahesh
+2025-05-11 20:01:46,284 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-11 20:04:48,206 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-11 20:05:27,713 - app - INFO - [supplier_routes.py:48] - Supplier added: 5 - Ganesh
+2025-05-11 20:09:31,035 - app - INFO - [supplier_routes.py:48] - Supplier added: 6 - Ganga
+2025-05-11 20:12:12,942 - app - INFO - [supplier_routes.py:48] - Supplier added: 7 - Ramesh
+>>>>>>> 46e668f140f59416a8aac15e319aa4660af554d7
+2025-05-17 10:12:54,372 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
