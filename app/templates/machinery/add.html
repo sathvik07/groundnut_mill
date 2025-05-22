@@ -1,11 +1,11 @@
-    {% extends "base.html" %}
+{% extends "base.html" %}
 
 {% block title %}Add Machinery{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <div class="card shadow-sm p-4">
-        <h2 class="mb-4">Add New Machinery</h2>
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="p-4 shadow-lg rounded-4 bg-white w-100" style="max-width: 600px;">
+        <h3 class="text-center text-success mb-4">Add New Machinery</h3>
 
         <form method="post">
             <div class="mb-3">
@@ -28,8 +28,10 @@
                 <input type="date" name="next_service" id="next_service" class="form-control">
             </div>
 
-            <button type="submit" class="btn btn-success">📄 Save</button>
-            <a href="{{ url_for('machinery.list_machines') }}" class="btn btn-danger ms-2">ㄨ Cancel</a>
+            <div>
+                <button type="submit" class="btn btn-success">📄 Save</button>
+                <a href="{{ url_for('machinery.list_machines') }}" class="btn btn-danger ms-2">ㄨ Cancel</a>
+            </div>
         </form>
     </div>
 </div>

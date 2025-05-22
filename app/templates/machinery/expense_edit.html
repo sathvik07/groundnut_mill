@@ -13,7 +13,7 @@
                 <div class="mb-3">
                     <label for="category" class="form-label">Category</label>
                     <select name="category" id="category" class="form-select" required>
-                        <option value="">Select a category</option>
+                        <option value="" disabled>Select a category</option>
                         {% for option in ['Oil Change', 'Service', 'Repair', 'Parts'] %}
                             <option value="{{ option }}" {% if expense.category == option %}selected{% endif %}>{{ option }}</option>
                         {% endfor %}
@@ -29,14 +29,36 @@
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
                     <input name="description" id="description" class="form-control"
-       value="{{ expense.description }}" placeholder="Short description" required>
-
+                           value="{{ expense.description }}" placeholder="Short description" required>
                 </div>
 
-                <button type="submit" class="btn btn-success">💾 Update</button>
+                <button type="submit" id="submit-btn" class="btn btn-success">💾 Update</button>
                 <a href="{{ url_for('machinery.list_machines') }}" class="btn btn-danger ms-2">↩ Cancel</a>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    const form = document.getElementById('expense-form');
+    const inputs = form.querySelectorAll('input, select');
+    const submitBtn = document.getElementById('submit-btn');
+
+    function validateForm() {
+        let allFilled = true;
+        inputs.forEach(input => {
+            if (!input.value.trim()) {
+                allFilled = false;
+            }
+        });
+        submitBtn.disabled = !allFilled;
+    }
+
+    inputs.forEach(input => {
+        input.addEventListener('input', validateForm);
+        input.addEventListener('change', validateForm);
+    });
+
+    window.addEventListener('DOMContentLoaded', validateForm);
+</script>
 {% endblock %}
