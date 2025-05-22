@@ -59,7 +59,11 @@ def add_supplier():
             if not all([name, contact, type_]):
                 flash("All fields are required", "error")
                 current_app.logger.warning("Supplier form submission failed: Missing fields.")
+
+                return render_template("suppliers/add.html", next=next_url)
+
                 return render_template("suppliers/add.html")
+
 
             supplier = Supplier(name=name, contact=contact, type=type_)
             db.session.add(supplier)

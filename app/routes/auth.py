@@ -23,7 +23,7 @@ def login():
         current_app.logger.warning(f"Failed login attempt for user: {username}")
         return redirect(url_for('auth.login'))
 
-    return render_template("auth/login.html")
+    return render_template("base.html")
 
 @auth_bp.route('/logout')
 @login_required

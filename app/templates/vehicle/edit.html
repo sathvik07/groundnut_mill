@@ -3,28 +3,31 @@
 {% block title %}Edit Vehicle{% endblock %}
 
 {% block content %}
-<div class="container my-4">
-    <h2>✎ Edit Vehicle Info</h2>
-    <form method="post" class="mt-4">
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="p-4 shadow-lg rounded-4 bg-white w-100" style="max-width: 600px;">
+        <h3 class="text-center text-success mb-4">✎ Edit Vehicle Info</h3>
 
-        <div class="mb-3">
-            <label for="name" class="form-label">Vehicle Name</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ vehicle.name }}" required>
-        </div>
+        <form method="post">
+            <div class="mb-3">
+                <label for="name" class="form-label">Vehicle Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ vehicle.name }}" required>
+            </div>
 
-        <div class="mb-3">
-            <label for="number_plate" class="form-label">Number Plate</label>
-            <input type="text" class="form-control" id="number_plate" name="number_plate" value="{{ vehicle.number_plate }}" required>
-        </div>
+            <div class="mb-3">
+                <label for="number_plate" class="form-label">Number Plate</label>
+                <input type="text" class="form-control" id="number_plate" name="number_plate" value="{{ vehicle.number_plate }}" required>
+            </div>
 
-        <div class="mb-3">
-            <label for="description" class="form-label">Description / Notes</label>
-            <textarea class="form-control" id="description" name="description" rows="3">{{ vehicle.description }}</textarea>
-        </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description / Notes</label>
+                <textarea class="form-control" id="description" name="description" rows="3">{{ vehicle.description }}</textarea>
+            </div>
 
-            <button type="submit" class="btn btn-success">💾 Update </button>
-           <a href="{{ url_for('vehicle.list_vehicles') }}" class="btn btn-danger">ㄨ Cancel</a>
-
-    </form>
+            <div>
+                <button type="submit" class="btn btn-success">💾 Update</button>
+                <a href="{{ url_for('vehicle.list_vehicles') }}" class="btn btn-danger">ㄨ Cancel</a>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

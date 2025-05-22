@@ -3,23 +3,33 @@
 {% block title %}Add Supplier{% endblock %}
 
 {% block content %}
-<h2>➕ Add Supplier</h2>
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="p-4 shadow-lg rounded-4 bg-white w-100" style="max-width: 600px;">
+        <h3 class="text-center text-success mb-4">➕ Add Supplier</h3>
 
-<form method="POST">
-    <input type="hidden" name="next" value="{{ next }}">
-    <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <input type="text" name="name" class="form-control" required>
+        <form method="POST">
+            <input type="hidden" name="next" value="{{ next }}">
+
+            <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" name="name" id="name" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="contact" class="form-label">Contact</label>
+                <input type="text" name="contact" id="contact" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="type" class="form-label">Type</label>
+                <input type="text" name="type" id="type" class="form-control" required>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-success">📄 Save</button>
+                <a href="{{ url_for('raw_stock.add_raw_stock') }}" class="btn btn-danger ms-2">ㄨ Cancel</a>
+            </div>
+        </form>
     </div>
-    <div class="mb-3">
-        <label for="contact" class="form-label">Contact</label>
-        <input type="text" name="contact" class="form-control" required>
-    </div>
-    <div class="mb-3">
-        <label for="type" class="form-label">Type</label>
-        <input type="text" name="type" class="form-control" required>
-    </div>
-    <button type="submit" class="btn btn-primary">Add Supplier</button>
-    <a href="{{ next }}" class="btn btn-secondary ms-2">Cancel</a>
-</form>
+</div>
 {% endblock %}

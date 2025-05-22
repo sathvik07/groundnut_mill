@@ -3,33 +3,41 @@
 {% block title %}Add Debt{% endblock %}
 
 {% block content %}
-<h2>➕ Lend Money to Supplier</h2>
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="p-4 shadow-lg rounded-4 bg-white w-100" style="max-width: 600px;">
+        <h3 class="text-center text-success mb-4">➕ Lend Money to Supplier</h3>
 
-<form method="POST">
-    <div class="mb-3">
-        <label class="form-label">Supplier</label>
-        <select name="supplier_id" class="form-select" required>
-            {% for s in suppliers %}
-            <option value="{{ s.id }}">{{ s.name }}</option>
-            {% endfor %}
-        </select>
+        <form method="POST">
+            <div class="mb-3">
+                <label for="supplier_id" class="form-label">Supplier</label>
+                <select name="supplier_id" id="supplier_id" class="form-select" required>
+                    <option value="" disabled selected>Select a supplier</option>
+                    {% for s in suppliers %}
+                        <option value="{{ s.id }}">{{ s.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="amount" class="form-label">Amount (₹)</label>
+                <input type="number" step="0.01" name="amount" id="amount" class="form-control" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="total_cost" class="form-label">Total Cost of Goods (₹) [Optional]</label>
+                <input type="number" step="0.01" name="total_cost" id="total_cost" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label for="notes" class="form-label">Purpose / Notes</label>
+                <input type="text" name="notes" id="notes" class="form-control">
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-success">📄 Save</button>
+                <a href="{{ url_for('debt.list_debts') }}" class="btn btn-danger ms-2">ㄨ Cancel</a>
+            </div>
+        </form>
     </div>
-
-    <div class="mb-3">
-        <label class="form-label">Amount (₹)</label>
-        <input type="number" step="0.01" name="amount" class="form-control" required>
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">Total Cost of Goods (₹) [Optional]</label>
-        <input type="number" step="0.01" name="total_cost" class="form-control">
-    </div>
-
-    <div class="mb-3">
-        <label class="form-label">Purpose / Notes</label>
-        <input type="text" name="notes" class="form-control">
-    </div>
-
-    <button class="btn btn-success">Submit</button>
-</form>
+</div>
 {% endblock %}

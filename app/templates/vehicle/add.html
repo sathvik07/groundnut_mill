@@ -3,43 +3,47 @@
 {% block title %}Add Vehicle{% endblock %}
 
 {% block content %}
-<div class="container mt-4">
-    <h2>Add New Vehicle</h2>
-    <form method="POST" action="{{ url_for('vehicle.add_vehicle') }}">
-        <div class="mb-3">
-            <label for="name" class="form-label">Vehicle Name</label>
-            <input type="text" class="form-control" id="name" name="name" required>
-        </div>
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="p-4 shadow-lg rounded-4 bg-white w-100" style="max-width: 720px;">
+        <h3 class="text-center text-success mb-4">🚗 Add New Vehicle</h3>
 
-        <div class="mb-3">
-            <label for="type" class="form-label">Vehicle Type</label>
-            <input type="text" class="form-control" id="type" name="type" placeholder="e.g., Truck, Tractor" required>
-        </div>
+        <form method="POST" action="{{ url_for('vehicle.add_vehicle') }}">
+            <div class="mb-3">
+                <label for="name" class="form-label">Vehicle Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="e.g., Tata Ace" required>
+            </div>
 
-        <div class="mb-3">
-            <label for="type" class="form-label">Vehicle Number Plate</label>
-            <input type="text" class="form-control" id="vehicle_number" name="vehicle_number" placeholder="e.g., KA051234" required>
-        </div>
+            <div class="mb-3">
+                <label for="type" class="form-label">Vehicle Type</label>
+                <input type="text" class="form-control" id="type" name="type" placeholder="e.g., Truck, Tractor" required>
+            </div>
 
-        <div class="mb-3">
-            <label for="purchase_date" class="form-label">Purchase Date</label>
-            <input type="date" class="form-control" id="purchase_date" name="purchase_date" required>
-        </div>
+            <div class="mb-3">
+                <label for="vehicle_number" class="form-label">Vehicle Number Plate</label>
+                <input type="text" class="form-control" id="vehicle_number" name="vehicle_number" placeholder="e.g., KA05AB1234" required>
+            </div>
 
-        <div class="mb-3">
-            <label for="service_interval_days" class="form-label">Service Interval (days)</label>
-            <input type="number" class="form-control" id="service_interval_days" name="service_interval_days" min="1" required>
-        </div>
+            <div class="mb-3">
+                <label for="purchase_date" class="form-label">Purchase Date</label>
+                <input type="date" class="form-control" id="purchase_date" name="purchase_date" required>
+            </div>
 
-        <div class="mb-3">
-            <label for="notes" class="form-label">Notes</label>
-            <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Optional remarks about this vehicle..."></textarea>
-        </div>
+            <div class="mb-3">
+                <label for="service_interval_days" class="form-label">Service Interval (days)</label>
+                <input type="number" class="form-control" id="service_interval_days" name="service_interval_days" min="1" required>
+            </div>
 
-         <button type="submit" class="btn btn-success">📄 Save </button>
-       <a href="{{ url_for('vehicle.list_vehicles') }}" class="btn btn-danger">ㄨ Cancel</a>
-    </form>
-    <br>
+            <div class="mb-3">
+                <label for="notes" class="form-label">Notes</label>
+                <textarea class="form-control" id="notes" name="notes" rows="3" placeholder="Optional remarks..."></textarea>
+            </div>
 
+            <div >
+                 <button type="submit" class="btn btn-success">📄 Save</button>
+                <a href="{{ url_for('vehicle.list_vehicles') }}" class="btn btn-danger">ㄨ Cancel</a>
+
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}

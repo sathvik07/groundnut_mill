@@ -3,40 +3,42 @@
 {% block title %}Edit Machinery{% endblock %}
 
 {% block content %}
-<div class="container py-4">
-    <h2 class="mb-4">✎Edit Machinery</h2>
+<div class="container mt-5 d-flex justify-content-center">
+    <div class="p-4 shadow-lg rounded-4 bg-white w-100" style="max-width: 600px;">
+        <h3 class="text-center text-success mb-4">✎ Edit Machinery</h3>
 
-    <form method="POST" >
+        <form method="POST">
 
-        <div class="mb-3">
-            <label for="name" class="form-label">Machine Name:</label>
-            <input type="text" class="form-control" id="name" name="name" value="{{ machinery.name }}" >
-        </div>
+            <div class="mb-3">
+                <label for="name" class="form-label">Machine Name:</label>
+                <input type="text" class="form-control" id="name" name="name" value="{{ machinery.name }}" required>
+            </div>
 
-        <div class="mb-3">
-            <label for="type" class="form-label">Machine Type:</label>
-            <input type="text" class="form-control" id="type" name="type" value="{{ machinery.type }}" >
-        </div>
+            <div class="mb-3">
+                <label for="type" class="form-label">Machine Type:</label>
+                <input type="text" class="form-control" id="type" name="type" value="{{ machinery.type }}" required>
+            </div>
 
-        <div class="mb-3">
-            <label for="last_service" class="form-label">Last Service Date:</label>
-            <input type="date" class="form-control" id="last_service" name="last_service"
-                value="{{ machinery.last_service_date.strftime('%Y-%m-%d') if machinery.last_service_date else '' }}"
-                required>
-        </div>
+            <div class="mb-3">
+                <label for="last_service" class="form-label">Last Service Date:</label>
+                <input type="date" class="form-control" id="last_service" name="last_service"
+                    value="{{ machinery.last_service_date.strftime('%Y-%m-%d') if machinery.last_service_date else '' }}"
+                    required>
+            </div>
 
-        <div class="mb-3">
-            <label for="next_service" class="form-label">Next Service Due:</label>
-            <input type="date" class="form-control" id="next_service" name="next_service"
-                value="{{ machinery.next_service_due.strftime('%Y-%m-%d') if machinery.next_service_due else '' }}"
-                required>
-        </div>
+            <div class="mb-3">
+                <label for="next_service" class="form-label">Next Service Due:</label>
+                <input type="date" class="form-control" id="next_service" name="next_service"
+                    value="{{ machinery.next_service_due.strftime('%Y-%m-%d') if machinery.next_service_due else '' }}"
+                    required>
+            </div>
 
+            <div>
+                <button type="submit" class="btn btn-success">💾 Update</button>
+                <a href="{{ url_for('machinery.list_machines') }}" class="btn btn-danger ms-2">ㄨ Cancel</a>
+            </div>
 
-             <button type="submit" class="btn btn-success">💾 Update </button>
-            <a href="{{ url_for('machinery.list_machines') }}" class="btn btn-danger">ㄨ Cancel</a>
-
-
-    </form>
+        </form>
+    </div>
 </div>
 {% endblock %}
