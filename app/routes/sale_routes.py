@@ -98,7 +98,7 @@ def add_sale():
 
 
 
-@sale_bp.route('/delete/<int:sale_id>', methods=["DELETE", "POST"])
+@sale_bp.route('/delete/<int:sale_id>', methods=["POST"])
 @login_required
 def delete_sale(sale_id):
     try:
@@ -106,7 +106,7 @@ def delete_sale(sale_id):
         db.session.delete(sale)
         db.session.commit()
         flash('Sale deleted successfully.', 'info')
-        current_app.logger.info(f"Sale deleted: {sale.id}")
+        current_app.logger.info(f"Sale deleted: {sale_id}")
         return redirect(url_for('sale.list_sales'))
     except Exception as e:
         db.session.rollback()
