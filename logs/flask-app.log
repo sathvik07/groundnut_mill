@@ -3195,3 +3195,35 @@ werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on 
 2025-05-11 20:05:27,713 - app - INFO - [supplier_routes.py:48] - Supplier added: 5 - Ganesh
 2025-05-11 20:09:31,035 - app - INFO - [supplier_routes.py:48] - Supplier added: 6 - Ganga
 2025-05-11 20:12:12,942 - app - INFO - [supplier_routes.py:48] - Supplier added: 7 - Ramesh
+2025-05-19 20:43:02,510 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-19 20:43:03,215 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-19 20:43:10,596 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-19 20:43:10,607 - app - ERROR - [__init__.py:50] - Unhandled exception: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+Traceback (most recent call last):
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 891, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/app.py", line 500, in raise_routing_exception
+    raise request.routing_exception  # type: ignore[misc]
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/flask/ctx.py", line 362, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/Users/guggarisathvik/groundnut_mill/.venv/lib/python3.9/site-packages/werkzeug/routing/map.py", line 629, in match
+    raise NotFound() from None
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+2025-05-19 20:43:19,730 - app - INFO - [auth.py:18] - User admin logged in successfully.
+2025-05-19 20:49:16,690 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-19 20:54:14,101 - flask-app - INFO - [__init__.py:25] - Starting Flask application...
+2025-05-19 21:00:34,737 - flask-app - INFO - [__init__.py:25] - Starting Flask application...

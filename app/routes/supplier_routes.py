@@ -26,6 +26,27 @@ def list_suppliers():
         suppliers = []
     return render_template("suppliers/list.html", suppliers=suppliers)
 
+
+@supplier_bp.route("/search", methods=["GET"])
+@login_required
+def search_suppliers():
+    search_query = request.args.get('q', '').strip()
+    page = request.args.get('page', 1, type=int)
+    per_page = 20
+
+    try:
+        query = Supplier.query
+        if search_query:
+            query = query.filter(Supplier.name.ilike(f"%{search_query}%"))
+
+        pagination = query.order_by(Supplier.name).paginate(page=page, per_page=per_page)
+        return render_template("suppliers/search.html", pagination=pagination, search_query=search_query)
+    except SQLAlchemyError as e:
+        flash("Error searching suppliers", "error")
+        current_app.logger.error(f"Error searching suppliers: {e}")
+        return render_template("suppliers/search.html", pagination=None, search_query=search_query)
+
+
 @supplier_bp.route("/add", methods=["GET", "POST"])
 @login_required
 def add_supplier():
