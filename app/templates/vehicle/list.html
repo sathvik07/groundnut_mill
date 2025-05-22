@@ -16,9 +16,9 @@
                 <div class="card shadow-sm h-100">
                     <div class="card-body">
                         <h5 class="card-title">{{ v.name }}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ v.number_plate }}</h6>
+                        <strong class="card-subtitle mb-2 text-muted">{{ v.number_plate }}</strong>
                         <p class="card-text">
-                            <strong>Description:</strong> {{ v.description or 'No description' }}
+                            <data>Description:</data> {{ v.description or 'No description' }}
 
 <!--                             Delete button with tooltip -->
                             <form action="{{ url_for('vehicle.delete_vehicle', vehicle_id=v.id) }}" method="POST" style="display:inline;">
