@@ -33,3 +33,6 @@ def register_routes(app):
 
     from .sale_routes import sale_bp
     app.register_blueprint(sale_bp, url_prefix="/sale")
+
+    from .distributor_routes import distributor_bp
+    app.register_blueprint(distributor_bp, url_prefix="/distributor")

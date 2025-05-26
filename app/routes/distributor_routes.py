@@ -25,15 +25,15 @@ def add_distributor():
         try:
             name = request.form["name"]
             contact = request.form["contact"]
-            type_ = request.form["type"]
+            address = request.form["address"]
 
-            distributor = Distributor(name=name, contact=contact, type=type_)
+            distributor = Distributor(name=name, contact=contact, address=address)
             db.session.add(distributor)
             db.session.commit()
             flash("Distributor added successfully!", "success")
             # Log the action
             current_app.logger.info(f"Distributor added: {distributor.id} - {distributor.name}")
-            return redirect(url_for("distributor.list_distributors"))
+            return redirect(url_for("sale.add_sale"))
         except Exception as e:
             db.session.rollback()
             flash("Error adding distributor.", "error")
